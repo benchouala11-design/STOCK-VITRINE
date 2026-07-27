@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+  
+  html[dir="ltr"] {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  html[dir="rtl"] {
+    font-family: 'Noto Sans Arabic', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Side Wall Projector Glows & Light Mode Glassmorphism */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07),
+              0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.glass-panel-glow-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  box-shadow: 0 25px 60px -15px rgba(99, 102, 241, 0.15), 
+              0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.glass-nav-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -5px rgba(15, 23, 42, 0.05);
+}
+
+/* Side Wall Projectors (Faisceaux lumineux latéraux style projecteur mural) */
+.projector-left-indigo {
+  background: radial-gradient(ellipse at -10% 40%, rgba(99, 102, 241, 0.25) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+}
+
+.projector-right-amber {
+  background: radial-gradient(ellipse at 110% 30%, rgba(245, 158, 11, 0.22) 0%, rgba(245, 158, 11, 0.06) 45%, transparent 70%);
+}
+
+.projector-center-cyan {
+  background: radial-gradient(circle at 50% -10%, rgba(56, 189, 248, 0.20) 0%, transparent 60%);
+}
+
+.bg-grid-pattern-light {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+/* Text Gradients (Light Mode Contrast) */
+.text-gradient-indigo-light {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-dark {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Pro — Manuel Utilisateur / دليل المستخدم</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --primary: #1e3a5f;
+    --primary-light: #2d5a8e;
+    --accent: #d4a853;
+    --accent-light: #f0d68a;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --section-bg: #f8fafc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 11pt;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 20mm 18mm 25mm 18mm;
+    @bottom-center { content: counter(page); font-size: 9pt; color: #94a3b8; }
+  }
+
+  .page-break { page-break-before: always; }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, #0f172a 0%, #1e3a5f 40%, #0f172a 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 40px;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(212,168,83,0.08) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(59,130,246,0.06) 0%, transparent 50%);
+  }
+  .cover-logo {
+    width: 120px; height: 120px;
+    background: linear-gradient(135deg, var(--accent) 0%, #b8922f 100%);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px; font-weight: 900; color: #0f172a;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 60px rgba(212,168,83,0.3);
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-size: 52px; font-weight: 900; letter-spacing: 8px;
+    margin-bottom: 8px; position: relative; z-index: 1;
+  }
+  .cover .gold-line {
+    width: 120px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 16px auto 24px;
+  }
+  .cover .subtitle {
+    font-size: 22px; font-weight: 300; opacity: 0.9;
+    margin-bottom: 8px; position: relative; z-index: 1;
+  }
+  .cover .subtitle-ar {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-size: 24px; font-weight: 500;
+    direction: rtl; position: relative; z-index: 1;
+  }
+  .cover .version {
+    margin-top: 50px; font-size: 13px;
+    opacity: 0.5; letter-spacing: 3px; text-transform: uppercase;
+    position: relative; z-index: 1;
+  }
+
+  /* ── TOC ── */
+  .toc { padding: 40px 0; }
+  .toc h2 {
+    text-align: center; font-size: 28px; font-weight: 800;
+    color: var(--primary); margin-bottom: 8px;
+  }
+  .toc .toc-subtitle {
+    text-align: center; font-family: 'Noto Sans Arabic';
+    font-size: 22px; color: var(--primary-light);
+    direction: rtl; margin-bottom: 30px;
+  }
+  .toc-list { list-style: none; max-width: 700px; margin: 0 auto; }
+  .toc-list li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px dotted var(--border);
+    font-size: 13px;
+  }
+  .toc-list li a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  .toc-list li a:hover { color: var(--accent); }
+  .toc-list .toc-page { color: var(--text-light); font-weight: 500; }
+  .toc-list .toc-chapter { font-size: 15px; font-weight: 800; color: var(--primary); border-bottom: 2px solid var(--accent); padding: 14px 0 6px; margin-top: 6px; }
+
+  /* ── CHAPTERS ── */
+  .chapter { padding: 10px 0 30px; }
+  .chapter-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff; padding: 30px 35px; border-radius: 16px;
+    margin-bottom: 30px; position: relative; overflow: hidden;
+  }
+  .chapter-header::after {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .chapter-header .ch-number {
+    font-size: 14px; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; opacity: 0.7; margin-bottom: 4px;
+  }
+  .chapter-header h2 { font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+  .chapter-header .ch-ar {
+    font-family: 'Noto Sans Arabic'; font-size: 20px;
+    font-weight: 600; direction: rtl; opacity: 0.85;
+  }
+
+  h3 {
+    font-size: 18px; font-weight: 700; color: var(--primary);
+    margin: 28px 0 12px; padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  h4 {
+    font-size: 14px; font-weight: 700; color: var(--primary-light);
+    margin: 20px 0 8px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* ── BILINGUAL BLOCKS ── */
+  .bilingual {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px; margin: 16px 0;
+  }
+  .bi-fr { text-align: left; direction: ltr; }
+  .bi-ar {
+    text-align: right; direction: rtl;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    background: var(--section-bg); padding: 16px 20px;
+    border-radius: 12px; border-right: 4px solid var(--accent);
+  }
+  .bi-fr {
+    background: var(--section-bg); padding: 16px 20px;
+    border-radius: 12px; border-left: 4px solid var(--info);
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    padding: 16px 20px; border-radius: 12px;
+    margin: 16px 0; font-size: 12px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .callout-tip { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+  .callout-warning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+  .callout-important { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+  .callout-danger { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%; border-collapse: collapse;
+    margin: 16px 0; font-size: 11px;
+  }
+  th {
+    background: var(--primary); color: #fff;
+    padding: 10px 14px; text-align: left;
+    font-weight: 600; font-size: 11px;
+  }
+  td {
+    padding: 9px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) { background: var(--section-bg); }
+  .rtl-table th, .rtl-table td { text-align: right; direction: rtl; font-family: 'Noto Sans Arabic'; }
+
+  /* ── STEPS ── */
+  .steps { counter-reset: step; margin: 16px 0; }
+  .step {
+    display: flex; gap: 14px; margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 32px; height: 32px;
+    background: var(--primary); color: #fff;
+    border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px; flex-shrink: 0;
+  }
+  .step-content { flex: 1; padding-top: 4px; }
+
+  /* ── KEYBOARD SHORTCUTS ── */
+  kbd {
+    background: #f1f5f9; border: 1px solid #cbd5e1;
+    border-radius: 6px; padding: 2px 8px;
+    font-family: 'Inter', monospace; font-size: 11px;
+    font-weight: 600; color: var(--primary);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    background: var(--section-bg); border-radius: 12px;
+    padding: 18px 22px; margin: 12px 0;
+    border-left: 4px solid var(--accent);
+  }
+  .faq-q { font-weight: 700; color: var(--primary); margin-bottom: 6px; font-size: 13px; }
+  .faq-a { color: var(--text); font-size: 12px; }
+
+  /* ── FOOTER ── */
+  .manual-footer {
+    text-align: center; padding: 30px 0;
+    border-top: 2px solid var(--border);
+    margin-top: 40px; font-size: 10px;
+    color: var(--text-light);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover { min-height: 100vh; }
+    .chapter-header { break-inside: avoid; }
+    .callout { break-inside: avoid; }
+    .step { break-inside: avoid; }
+    .faq-item { break-inside: avoid; }
+  }
+
+  .icon-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 10px;
+    font-size: 18px; margin-right: 8px; flex-shrink: 0;
+  }
+  .section-intro {
+    font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; line-height: 1.8;
+  }
+  ul, ol { margin: 8px 0 16px 24px; }
+  li { margin-bottom: 4px; }
+
+  .shortcut-table td:first-child { white-space: nowrap; }
+
+  .ar-block {
+    direction: rtl; text-align: right;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    background: linear-gradient(135deg, #fefce8 0%, #fff7ed 100%);
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .ar-block h4 {
+    color: var(--accent); font-family: 'Noto Sans Arabic';
+    border-bottom: 2px solid var(--accent-light);
+    padding-bottom: 6px; margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                        COVER PAGE                              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">SP</div>
+  <h1>STOCK PRO</h1>
+  <div class="gold-line"></div>
+  <div class="subtitle">Manuel Utilisateur</div>
+  <div class="subtitle-ar">دليل المستخدم</div>
+  <div class="subtitle" style="font-size:16px; margin-top:8px;">Guide Complet</div>
+  <div class="version">Version 1.0 — 2026</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                     TABLE OF CONTENTS                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="toc page-break">
+  <h2>📋 Sommaire</h2>
+  <div class="toc-subtitle">فهرس المحتويات</div>
+  <ul class="toc-list">
+    <li class="toc-chapter"><a href="#ch1">Chapitre 1 — Présentation du logiciel / تقديم البرنامج</a></li>
+    <li><a href="#ch1-1">À quoi sert Stock Pro</a></li>
+    <li><a href="#ch1-2">Pour quel type de commerce</a></li>
+    <li><a href="#ch1-3">Les avantages</a></li>
+
+    <li class="toc-chapter"><a href="#ch2">Chapitre 2 — Première ouverture / أول تشغيل</a></li>
+    <li><a href="#ch2-1">Connexion</a></li>
+    <li><a href="#ch2-2">Activation de la licence</a></li>
+    <li><a href="#ch2-3">Découverte de l'écran principal</a></li>
+
+    <li class="toc-chapter"><a href="#ch3">Chapitre 3 — Navigation / التنقل</a></li>
+    <li><a href="#ch3-1">La barre de navigation latérale</a></li>
+    <li><a href="#ch3-2">Le tableau de bord (Accueil)</a></li>
+
+    <li class="toc-chapter"><a href="#ch4">Chapitre 4 — Produits & Stock / المنتجات والمخزون</a></li>
+    <li><a href="#ch4-1">Créer un produit</a></li>
+    <li><a href="#ch4-2">Modifier un produit</a></li>
+    <li><a href="#ch4-3">Prix et tarification</a></li>
+    <li><a href="#ch4-4">Codes-barres et étiquettes</a></li>
+    <li><a href="#ch4-5">Unités de conditionnement</a></li>
+    <li><a href="#ch4-6">Images et apparence POS</a></li>
+    <li><a href="#ch4-7">Dates de péremption</a></li>
+    <li><a href="#ch4-8">Archiver un produit</a></li>
+    <li><a href="#ch4-9">Import et export Excel</a></li>
+
+    <li class="toc-chapter"><a href="#ch5">Chapitre 5 — Clients / العملاء</a></li>
+    <li><a href="#ch5-1">Créer et modifier un client</a></li>
+    <li><a href="#ch5-2">Gestion du crédit</a></li>
+    <li><a href="#ch5-3">Règlement de dette</a></li>
+    <li><a href="#ch5-4">Historique et relevé de compte</a></li>
+
+    <li class="toc-chapter"><a href="#ch6">Chapitre 6 — Fournisseurs / الموردون</a></li>
+    <li><a href="#ch6-1">Créer et modifier un fournisseur</a></li>
+    <li><a href="#ch6-2">Dettes et paiements fournisseur</a></li>
+
+    <li class="toc-chapter"><a href="#ch7">Chapitre 7 — Achats / المشتريات</a></li>
+    <li><a href="#ch7-1">Créer un bon d'achat</a></li>
+    <li><a href="#ch7-2">Réceptionner la marchandise</a></li>
+    <li><a href="#ch7-3">Paiement fournisseur</a></li>
+
+    <li class="toc-chapter"><a href="#ch8">Chapitre 8 — Point de Vente (Comptoir) / نقطة البيع</a></li>
+    <li><a href="#ch8-1">L'écran du comptoir</a></li>
+    <li><a href="#ch8-2">Chercher et ajouter un produit</a></li>
+    <li><a href="#ch8-3">Scanner un code-barres</a></li>
+    <li><a href="#ch8-4">Modifier la quantité</a></li>
+    <li><a href="#ch8-5">Appliquer une remise</a></li>
+    <li><a href="#ch8-6">Changer le prix ou le tarif</a></li>
+    <li><a href="#ch8-7">Vente au poids</a></li>
+    <li><a href="#ch8-8">Sélectionner un client</a></li>
+    <li><a href="#ch8-9">Encaisser et payer</a></li>
+    <li><a href="#ch8-10">Impression du ticket</a></li>
+    <li><a href="#ch8-11">Suspendre et rappeler un ticket</a></li>
+    <li><a href="#ch8-12">Historique des ventes et retours</a></li>
+    <li><a href="#ch8-13">Article divers (non référencé)</a></li>
+    <li><a href="#ch8-14">Raccourcis clavier</a></li>
+
+    <li class="toc-chapter"><a href="#ch9">Chapitre 9 — Documents / الوثائق</a></li>
+    <li><a href="#ch9-1">Types de documents</a></li>
+    <li><a href="#ch9-2">Créer et modifier un document</a></li>
+    <li><a href="#ch9-3">Prévisualisation et impression</a></li>
+    <li><a href="#ch9-4">TVA pour les factures entreprise</a></li>
+    <li><a href="#ch9-5">Annuler un document</a></li>
+
+    <li class="toc-chapter"><a href="#ch10">Chapitre 10 — Caisse / الصندوق</a></li>
+    <li><a href="#ch10-1">Ouvrir la caisse</a></li>
+    <li><a href="#ch10-2">Entrées et sorties de caisse</a></li>
+    <li><a href="#ch10-3">Clôturer la caisse</a></li>
+
+    <li class="toc-chapter"><a href="#ch11">Chapitre 11 — Rapports / التقارير</a></li>
+    <li><a href="#ch11-1">Vue d'ensemble</a></li>
+    <li><a href="#ch11-2">Comparaison de périodes</a></li>
+    <li><a href="#ch11-3">Graphiques et tendances</a></li>
+    <li><a href="#ch11-4">Bilan financier</a></li>
+    <li><a href="#ch11-5">Stock et inventaire</a></li>
+    <li><a href="#ch11-6">Dettes et créances</a></li>
+
+    <li class="toc-chapter"><a href="#ch12">Chapitre 12 — Employés / الموظفون</a></li>
+    <li><a href="#ch12-1">Fiche employé</a></li>
+    <li><a href="#ch12-2">Présence et pointage</a></li>
+    <li><a href="#ch12-3">Salaires et avances</a></li>
+
+    <li class="toc-chapter"><a href="#ch13">Chapitre 13 — Loyers & Charges / الإيجار</a></li>
+
+    <li class="toc-chapter"><a href="#ch14">Chapitre 14 — Paramètres / الإعدادات</a></li>
+    <li><a href="#ch14-1">Informations de l'établissement</a></li>
+    <li><a href="#ch14-2">Imprimantes</a></li>
+    <li><a href="#ch14-3">Langue et personnalisation</a></li>
+    <li><a href="#ch14-4">Valeurs par défaut</a></li>
+    <li><a href="#ch14-5">Sauvegarde et restauration</a></li>
+    <li><a href="#ch14-6">Configuration réseau</a></li>
+    <li><a href="#ch14-7">Licence</a></li>
+    <li><a href="#ch14-8">Utilisateurs et rôles</a></li>
+
+    <li class="toc-chapter"><a href="#ch15">Chapitre 15 — Questions fréquentes / أسئلة شائعة</a></li>
+    <li class="toc-chapter"><a href="#ch16">Chapitre 16 — Conseils et bonnes pratiques / نصائح</a></li>
+    <li class="toc-chapter"><a href="#ch17">Chapitre 17 — Glossaire / المصطلحات</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                   CHAPITRE 1 — PRÉSENTATION                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch1">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 1</div>
+    <h2>Présentation du logiciel</h2>
+    <div class="ch-ar">تقديم البرنامج</div>
+  </div>
+
+  <h3 id="ch1-1">À quoi sert Stock Pro ? / ما فائدة برنامج ستوك برو؟</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p><strong>Stock Pro</strong> est un logiciel de gestion commerciale complet, conçu pour aider les commerçants à gérer toutes les opérations de leur activité quotidienne depuis un seul écran :</p>
+      <ul>
+        <li>📦 <strong>Gestion du stock</strong> — Suivre vos produits, quantités, prix d'achat et de vente</li>
+        <li>🛒 <strong>Point de vente rapide</strong> — Encaisser les clients avec un écran tactile ou un clavier</li>
+        <li>🧾 <strong>Facturation</strong> — Créer des factures, devis, bons de livraison et tickets de caisse</li>
+        <li>👥 <strong>Gestion des clients</strong> — Suivre les crédits, les dettes et l'historique de chaque client</li>
+        <li>🚚 <strong>Gestion des fournisseurs</strong> — Enregistrer les achats et régler les dettes fournisseur</li>
+        <li>💰 <strong>Caisse</strong> — Ouvrir et clôturer la caisse avec un suivi précis des entrées et sorties d'argent</li>
+        <li>📊 <strong>Rapports</strong> — Connaître votre chiffre d'affaires, vos bénéfices et vos dépenses en un coup d'œil</li>
+        <li>👷 <strong>Employés</strong> — Gérer la présence, les salaires et les avances de votre personnel</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p><strong>ستوك برو</strong> هو برنامج إدارة تجارية متكامل، مصمم لمساعدة التجار على إدارة جميع عمليات نشاطهم اليومي من شاشة واحدة:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>📦 <strong>إدارة المخزون</strong> — متابعة المنتجات والكميات وأسعار الشراء والبيع</li>
+        <li>🛒 <strong>نقطة بيع سريعة</strong> — تحصيل الأموال من العملاء بشاشة لمس أو لوحة مفاتيح</li>
+        <li>🧾 <strong>الفوترة</strong> — إنشاء الفواتير، عروض الأسعار، سندات التسليم وتذاكر الصندوق</li>
+        <li>👥 <strong>إدارة العملاء</strong> — متابعة الديون والتاريخ التجاري لكل عميل</li>
+        <li>🚚 <strong>إدارة الموردين</strong> — تسجيل المشتريات وتسوية ديون الموردين</li>
+        <li>💰 <strong>الصندوق</strong> — فتح وإغلاق الصندوق مع متابعة دقيقة للمداخيل والمصاريف</li>
+        <li>📊 <strong>التقارير</strong> — معرفة رقم الأعمال والأرباح والمصاريف بلمحة واحدة</li>
+        <li>👷 <strong>الموظفون</strong> — إدارة الحضور والرواتب والسلف</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch1-2">Pour quel type de commerce ? / لأي نوع من التجارة؟</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Stock Pro convient à tous les commerces de proximité et de gros :</p>
+      <ul>
+        <li>Épiceries et supérettes</li>
+        <li>Magasins de détail et demi-gros</li>
+        <li>Grossistes</li>
+        <li>Quincailleries et fournitures</li>
+        <li>Cosmétiques et parfumeries</li>
+        <li>Boulangeries et pâtisseries</li>
+        <li>Boutiques de vêtements et chaussures</li>
+        <li>Papeteries et librairies</li>
+        <li>Et tout commerce ayant besoin de gérer du stock et de la facturation</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>ستوك برو مناسب لجميع أنواع التجارة القريبة والجملة:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>البقالات والمتاجر الصغيرة</li>
+        <li>محلات التجزئة ونصف الجملة</li>
+        <li>تجار الجملة</li>
+        <li>محلات المعدات واللوازم</li>
+        <li>مستحضرات التجميل والعطور</li>
+        <li>المخابز والحلويات</li>
+        <li>محلات الملابس والأحذية</li>
+        <li>المكتبات ومحلات القرطاسية</li>
+        <li>وأي نشاط تجاري يحتاج إدارة المخزون والفوترة</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch1-3">Les avantages / المزايا</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <ul>
+        <li>✅ <strong>Bilingue</strong> — Interface disponible en français et en arabe</li>
+        <li>✅ <strong>Multi-postes</strong> — Connectez plusieurs ordinateurs dans le même magasin</li>
+        <li>✅ <strong>Impression directe</strong> — Impression des tickets et factures sans passer par les fenêtres Windows</li>
+        <li>✅ <strong>Hors ligne</strong> — Fonctionne sans connexion internet</li>
+        <li>✅ <strong>Sauvegarde automatique</strong> — Vos données sont protégées</li>
+        <li>✅ <strong>Simple</strong> — Conçu pour être utilisé par n'importe qui</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <ul style="list-style: none; padding: 0;">
+        <li>✅ <strong>ثنائي اللغة</strong> — واجهة متوفرة بالعربية والفرنسية</li>
+        <li>✅ <strong>متعدد المحطات</strong> — ربط عدة حواسيب في نفس المحل</li>
+        <li>✅ <strong>طباعة مباشرة</strong> — طباعة التذاكر والفواتير بدون نافذة الطباعة</li>
+        <li>✅ <strong>بدون إنترنت</strong> — يعمل بدون اتصال بالإنترنت</li>
+        <li>✅ <strong>نسخ احتياطي تلقائي</strong> — بياناتك محمية</li>
+        <li>✅ <strong>بسيط</strong> — مصمم للاستخدام من طرف أي شخص</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                 CHAPITRE 2 — PREMIÈRE OUVERTURE                -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch2">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 2</div>
+    <h2>Première ouverture</h2>
+    <div class="ch-ar">أول تشغيل للبرنامج</div>
+  </div>
+
+  <h3 id="ch2-1">Connexion / تسجيل الدخول</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Lorsque vous ouvrez Stock Pro pour la première fois, l'écran de connexion s'affiche :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content"><strong>Sélectionnez votre profil</strong> — Cliquez sur votre nom d'utilisateur parmi les cartes affichées (Administrateur, Gérant, Caissier...).</div></div>
+        <div class="step"><div class="step-content"><strong>Saisissez votre code PIN</strong> — Tapez votre code à 4 ou 6 chiffres sur le pavé numérique affiché à l'écran ou sur votre clavier.</div></div>
+        <div class="step"><div class="step-content"><strong>Validez</strong> — Cliquez sur « Se connecter » ou appuyez sur la touche Entrée.</div></div>
+      </div>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div><strong>Attention :</strong> Après 5 tentatives erronées, votre compte sera temporairement verrouillé pendant 30 secondes. Un compteur s'affichera à l'écran.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>عند فتح ستوك برو لأول مرة، تظهر شاشة تسجيل الدخول:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content"><strong>اختر حسابك</strong> — انقر على اسمك من بين البطاقات المعروضة (مدير، أمين صندوق...).</div></div>
+        <div class="step"><div class="step-content"><strong>أدخل رمز PIN</strong> — اكتب الرمز المكون من 4 إلى 6 أرقام على لوحة الأرقام.</div></div>
+        <div class="step"><div class="step-content"><strong>تأكيد</strong> — انقر على "تسجيل الدخول" أو اضغط على مفتاح الإدخال.</div></div>
+      </div>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div><strong>تنبيه:</strong> بعد 5 محاولات خاطئة، سيتم قفل حسابك مؤقتاً لمدة 30 ثانية.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch2-2">Activation de la licence / تفعيل الرخصة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Si c'est la première installation, vous devrez activer votre licence :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content"><strong>Identifiant machine</strong> — L'écran affiche un identifiant unique pour votre ordinateur. Copiez-le en cliquant sur le bouton « Copier ».</div></div>
+        <div class="step"><div class="step-content"><strong>Communiquez cet identifiant</strong> — Envoyez-le à votre revendeur pour obtenir votre clé d'activation.</div></div>
+        <div class="step"><div class="step-content"><strong>Saisissez la clé</strong> — Collez la clé reçue (format : <code>ACTIV-1Y-XXXXXXXX</code>) dans le champ prévu.</div></div>
+        <div class="step"><div class="step-content"><strong>Activez</strong> — Cliquez sur « Activer la licence ». Le logiciel est prêt à l'emploi.</div></div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Astuce :</strong> Une période d'essai gratuite vous est offerte pour découvrir le logiciel avant l'activation.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>إذا كان هذا أول تثبيت، يجب تفعيل الرخصة:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content"><strong>معرّف الجهاز</strong> — تعرض الشاشة معرفاً فريداً لجهازك. انسخه بالنقر على زر "نسخ".</div></div>
+        <div class="step"><div class="step-content"><strong>أرسل المعرّف</strong> — أرسله إلى البائع للحصول على مفتاح التفعيل.</div></div>
+        <div class="step"><div class="step-content"><strong>أدخل المفتاح</strong> — الصق المفتاح المستلم في الخانة المخصصة.</div></div>
+        <div class="step"><div class="step-content"><strong>فعّل</strong> — انقر على "تفعيل الرخصة". البرنامج جاهز للاستخدام.</div></div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>نصيحة:</strong> يتم منحك فترة تجريبية مجانية لاكتشاف البرنامج قبل التفعيل.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch2-3">Découverte de l'écran principal / اكتشاف الشاشة الرئيسية</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Après la connexion, vous arrivez sur le <strong>tableau de bord</strong> (Accueil). Cet écran vous offre une vue d'ensemble de votre activité :</p>
+      <ul>
+        <li>📈 <strong>Chiffre d'affaires du jour</strong> — Le montant total de vos ventes aujourd'hui</li>
+        <li>💹 <strong>Marge bénéficiaire</strong> — Votre bénéfice net</li>
+        <li>💳 <strong>Crédits clients</strong> — Le total des dettes de vos clients</li>
+        <li>🏦 <strong>Dettes fournisseurs</strong> — Ce que vous devez à vos fournisseurs</li>
+        <li>📦 <strong>Valeur du stock</strong> — La valeur totale de votre inventaire</li>
+        <li>💰 <strong>Solde caisse</strong> — L'argent disponible dans la caisse</li>
+      </ul>
+      <p>Des boutons d'accès rapide vous permettent de lancer directement une vente, créer un produit ou ouvrir la caisse.</p>
+    </div>
+    <div class="bi-ar">
+      <p>بعد تسجيل الدخول، تصل إلى <strong>لوحة القيادة</strong> (الرئيسية). هذه الشاشة تمنحك نظرة شاملة على نشاطك:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>📈 <strong>رقم أعمال اليوم</strong> — المبلغ الإجمالي لمبيعات اليوم</li>
+        <li>💹 <strong>هامش الربح</strong> — الربح الصافي</li>
+        <li>💳 <strong>ديون العملاء</strong> — إجمالي ما يدين به العملاء</li>
+        <li>🏦 <strong>ديون الموردين</strong> — ما تدين به للموردين</li>
+        <li>📦 <strong>قيمة المخزون</strong> — القيمة الإجمالية للبضاعة</li>
+        <li>💰 <strong>رصيد الصندوق</strong> — المال المتاح في الصندوق</li>
+      </ul>
+      <p>أزرار الوصول السريع تتيح لك البدء مباشرة في عملية بيع أو إنشاء منتج أو فتح الصندوق.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                  CHAPITRE 3 — NAVIGATION                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch3">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 3</div>
+    <h2>Navigation dans le logiciel</h2>
+    <div class="ch-ar">التنقل في البرنامج</div>
+  </div>
+
+  <h3 id="ch3-1">La barre de navigation latérale / شريط التنقل الجانبي</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Sur le côté gauche de l'écran (ou droit en arabe), vous trouverez la <strong>barre de navigation</strong>. Elle contient toutes les sections du logiciel, représentées par des icônes colorées :</p>
+      <table>
+        <tr><th>Icône</th><th>Section</th><th>Description</th></tr>
+        <tr><td>🏠</td><td><strong>ACCUEIL</strong></td><td>Tableau de bord avec les chiffres clés du jour</td></tr>
+        <tr><td>🛒</td><td><strong>COMPTOIR</strong></td><td>Point de vente pour encaisser les clients</td></tr>
+        <tr><td>🧾</td><td><strong>FACTURES</strong></td><td>Tous vos documents commerciaux</td></tr>
+        <tr><td>📦</td><td><strong>STOCK</strong></td><td>Gestion des produits et de l'inventaire</td></tr>
+        <tr><td>👥</td><td><strong>CLIENTS</strong></td><td>Fichier client et suivi des crédits</td></tr>
+        <tr><td>🚚</td><td><strong>FOURNISSEURS</strong></td><td>Fichier fournisseur et dettes</td></tr>
+        <tr><td>📥</td><td><strong>ACHATS</strong></td><td>Bons d'achat et réceptions de marchandise</td></tr>
+        <tr><td>💰</td><td><strong>CAISSE</strong></td><td>Ouverture, clôture et mouvements de caisse</td></tr>
+        <tr><td>👷</td><td><strong>EMPLOYÉS</strong></td><td>Personnel, présences et salaires</td></tr>
+        <tr><td>📊</td><td><strong>RAPPORTS</strong></td><td>Statistiques et analyses financières</td></tr>
+        <tr><td>⚙️</td><td><strong>PARAMÈTRES</strong></td><td>Configuration du logiciel</td></tr>
+      </table>
+      <p>Cliquez simplement sur l'icône souhaitée pour accéder à la section correspondante.</p>
+    </div>
+    <div class="bi-ar">
+      <p>على الجانب الأيمن من الشاشة (أو الأيسر بالفرنسية)، تجد <strong>شريط التنقل</strong>. يحتوي على جميع أقسام البرنامج:</p>
+      <table class="rtl-table">
+        <tr><th>الأيقونة</th><th>القسم</th><th>الوصف</th></tr>
+        <tr><td>🏠</td><td><strong>الرئيسية</strong></td><td>لوحة القيادة مع الأرقام الرئيسية لليوم</td></tr>
+        <tr><td>🛒</td><td><strong>نقطة البيع</strong></td><td>تحصيل الأموال من العملاء</td></tr>
+        <tr><td>🧾</td><td><strong>الفواتير</strong></td><td>جميع الوثائق التجارية</td></tr>
+        <tr><td>📦</td><td><strong>المخزون</strong></td><td>إدارة المنتجات والجرد</td></tr>
+        <tr><td>👥</td><td><strong>العملاء</strong></td><td>ملف العملاء ومتابعة الديون</td></tr>
+        <tr><td>🚚</td><td><strong>الموردون</strong></td><td>ملف الموردين والديون</td></tr>
+        <tr><td>📥</td><td><strong>المشتريات</strong></td><td>سندات الشراء واستلام البضاعة</td></tr>
+        <tr><td>💰</td><td><strong>الصندوق</strong></td><td>فتح وإغلاق وحركات الصندوق</td></tr>
+        <tr><td>👷</td><td><strong>الموظفون</strong></td><td>الحضور والرواتب والسلف</td></tr>
+        <tr><td>📊</td><td><strong>التقارير</strong></td><td>الإحصائيات والتحليلات المالية</td></tr>
+        <tr><td>⚙️</td><td><strong>الإعدادات</strong></td><td>إعداد البرنامج</td></tr>
+      </table>
+      <p>انقر ببساطة على الأيقونة المطلوبة للوصول إلى القسم المقابل.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-important">
+    <div class="callout-icon">ℹ️</div>
+    <div><strong>Remarque / ملاحظة :</strong> Les sections visibles dépendent de votre rôle. Un caissier ne verra que les sections autorisées par l'administrateur. / الأقسام المرئية تعتمد على صلاحياتك. أمين الصندوق يرى فقط الأقسام المسموح بها.</div>
+  </div>
+
+  <h3 id="ch3-2">Les notifications / الإشعارات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>L'icône de cloche 🔔 dans la barre latérale affiche vos notifications :</p>
+      <ul>
+        <li><strong>Stock faible</strong> — Un produit est passé sous le seuil d'alerte</li>
+        <li><strong>Péremption proche</strong> — Un produit approche de sa date d'expiration</li>
+        <li><strong>Crédit dépassé</strong> — Un client a dépassé sa limite de crédit</li>
+      </ul>
+      <p>Cliquez sur une notification pour être dirigé directement vers le produit ou le client concerné. Le bouton « Tout lu » efface toutes les notifications.</p>
+    </div>
+    <div class="bi-ar">
+      <p>أيقونة الجرس 🔔 في الشريط الجانبي تعرض الإشعارات:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>مخزون منخفض</strong> — منتج نزل تحت حد التنبيه</li>
+        <li><strong>اقتراب انتهاء الصلاحية</strong> — منتج يقترب من تاريخ الانتهاء</li>
+        <li><strong>تجاوز حد الائتمان</strong> — عميل تجاوز حده الائتماني</li>
+      </ul>
+      <p>انقر على إشعار للانتقال مباشرة إلى المنتج أو العميل المعني. زر "قراءة الكل" يمسح جميع الإشعارات.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--               CHAPITRE 4 — PRODUITS & STOCK                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch4">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 4</div>
+    <h2>Produits & Stock</h2>
+    <div class="ch-ar">المنتجات والمخزون</div>
+  </div>
+
+  <h3 id="ch4-1">Créer un produit / إنشاء منتج</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour ajouter un nouveau produit à votre catalogue :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Allez dans l'onglet <strong>STOCK</strong> depuis la barre de navigation.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur le bouton <strong>« Nouveau Produit »</strong>.</div></div>
+        <div class="step"><div class="step-content">Remplissez les informations de base :
+          <ul>
+            <li><strong>Désignation</strong> — Le nom du produit en français</li>
+            <li><strong>Désignation arabe</strong> — Le nom en arabe (optionnel)</li>
+            <li><strong>Code-barres</strong> — Scannez ou tapez le code-barres du produit</li>
+            <li><strong>Catégorie</strong> — Choisissez ou créez une catégorie (ex: Boissons, Épicerie...)</li>
+            <li><strong>Marque</strong> — La marque du produit</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">Renseignez les prix (voir section suivante).</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Enregistrer »</strong>.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>لإضافة منتج جديد إلى الكاتالوج:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">اذهب إلى تبويب <strong>المخزون</strong> من شريط التنقل.</div></div>
+        <div class="step"><div class="step-content">انقر على زر <strong>"منتج جديد"</strong>.</div></div>
+        <div class="step"><div class="step-content">املأ المعلومات الأساسية:
+          <ul style="list-style:none; padding:0;">
+            <li><strong>التسمية</strong> — اسم المنتج بالفرنسية</li>
+            <li><strong>التسمية بالعربية</strong> — الاسم بالعربية (اختياري)</li>
+            <li><strong>الباركود</strong> — امسح أو اكتب باركود المنتج</li>
+            <li><strong>الفئة</strong> — اختر أو أنشئ فئة (مثال: مشروبات، بقالة...)</li>
+            <li><strong>العلامة التجارية</strong> — علامة المنتج</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">أدخل الأسعار (انظر القسم التالي).</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"حفظ"</strong>.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch4-2">Modifier un produit / تعديل منتج</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour modifier un produit existant, cliquez sur sa ligne dans la liste puis sur le bouton « Modifier ». Vous pouvez changer toutes les informations : nom, prix, catégorie, image, etc.</p>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Astuce :</strong> Utilisez le clic droit sur une ligne de produit pour accéder au menu rapide : attribuer une couleur, copier la référence, ou imprimer l'étiquette.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>لتعديل منتج موجود، انقر على سطره في القائمة ثم على زر "تعديل". يمكنك تغيير جميع المعلومات: الاسم، السعر، الفئة، الصورة، إلخ.</p>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>نصيحة:</strong> استخدم النقر بالزر الأيمن على سطر المنتج للوصول للقائمة السريعة: تعيين لون، نسخ المرجع، أو طباعة الملصق.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch4-3">Prix et tarification / الأسعار والتعريفة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Chaque produit possède plusieurs niveaux de prix :</p>
+      <table>
+        <tr><th>Niveau</th><th>Usage</th></tr>
+        <tr><td><strong>Prix d'achat TTC</strong></td><td>Le prix auquel vous achetez le produit à votre fournisseur</td></tr>
+        <tr><td><strong>Prix Détail</strong></td><td>Le prix de vente à l'unité pour les clients particuliers</td></tr>
+        <tr><td><strong>Prix Semi-Gros</strong></td><td>Prix intermédiaire pour les quantités moyennes</td></tr>
+        <tr><td><strong>Prix Gros</strong></td><td>Prix réduit pour les grandes quantités</td></tr>
+        <tr><td><strong>Prix Crédit</strong></td><td>Prix spécial pour les ventes à crédit</td></tr>
+      </table>
+      <p>Le logiciel calcule automatiquement la <strong>marge bénéficiaire</strong> (le bénéfice) pour chaque niveau de prix.</p>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Astuce :</strong> Vous pouvez saisir une marge en pourcentage et le logiciel calculera automatiquement le prix de vente correspondant.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>كل منتج يملك عدة مستويات أسعار:</p>
+      <table class="rtl-table">
+        <tr><th>المستوى</th><th>الاستخدام</th></tr>
+        <tr><td><strong>سعر الشراء شامل الضريبة</strong></td><td>السعر الذي تشتري به المنتج من المورد</td></tr>
+        <tr><td><strong>سعر التجزئة</strong></td><td>سعر البيع بالوحدة للعملاء العاديين</td></tr>
+        <tr><td><strong>سعر نصف الجملة</strong></td><td>سعر متوسط للكميات المتوسطة</td></tr>
+        <tr><td><strong>سعر الجملة</strong></td><td>سعر مخفض للكميات الكبيرة</td></tr>
+        <tr><td><strong>سعر الدين</strong></td><td>سعر خاص للبيع بالدين</td></tr>
+      </table>
+      <p>البرنامج يحسب تلقائياً <strong>هامش الربح</strong> لكل مستوى سعر.</p>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>نصيحة:</strong> يمكنك إدخال هامش بالنسبة المئوية والبرنامج يحسب سعر البيع المقابل تلقائياً.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch4-4">Codes-barres et étiquettes / الباركود والملصقات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Stock Pro vous permet d'imprimer des étiquettes avec code-barres pour vos produits :</p>
+      <ul>
+        <li><strong>Étiquette petit format</strong> (40×25mm, 38×25mm) — Pour les imprimantes d'étiquettes</li>
+        <li><strong>Étiquette moyen format</strong> (50×30mm, 80×50mm) — Pour les prix en rayon</li>
+        <li><strong>Planche A4</strong> — Pour imprimer plusieurs étiquettes sur une feuille A4</li>
+      </ul>
+      <p>Sélectionnez un ou plusieurs produits, puis cliquez sur « Imprimer code-barres ».</p>
+    </div>
+    <div class="bi-ar">
+      <p>ستوك برو يتيح لك طباعة ملصقات بالباركود لمنتجاتك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>ملصق صغير</strong> (40×25مم، 38×25مم) — لطابعات الملصقات</li>
+        <li><strong>ملصق متوسط</strong> (50×30مم، 80×50مم) — لأسعار الرفوف</li>
+        <li><strong>لوحة A4</strong> — لطباعة عدة ملصقات على ورقة A4</li>
+      </ul>
+      <p>حدد منتجاً أو عدة منتجات، ثم انقر على "طباعة الباركود".</p>
+    </div>
+  </div>
+
+  <h3 id="ch4-5">Unités de conditionnement / وحدات التعبئة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Un même produit peut avoir plusieurs unités de vente. Par exemple :</p>
+      <ul>
+        <li><strong>Pièce</strong> — L'unité de base (1 bouteille)</li>
+        <li><strong>Pack de 6</strong> — Contient 6 pièces avec un prix spécial</li>
+        <li><strong>Carton de 24</strong> — Contient 24 pièces avec un prix encore meilleur</li>
+      </ul>
+      <p>Chaque unité peut avoir son propre code-barres et son propre prix. Au comptoir, appuyez sur <kbd>Shift Gauche</kbd> pour basculer entre les unités d'un produit.</p>
+    </div>
+    <div class="bi-ar">
+      <p>المنتج الواحد يمكن أن يكون له عدة وحدات بيع. مثلاً:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>قطعة</strong> — الوحدة الأساسية (زجاجة واحدة)</li>
+        <li><strong>عبوة من 6</strong> — تحتوي 6 قطع بسعر خاص</li>
+        <li><strong>كرتون من 24</strong> — يحتوي 24 قطعة بسعر أفضل</li>
+      </ul>
+      <p>كل وحدة يمكن أن يكون لها باركود خاص وسعر خاص. في الكونتوار، اضغط <kbd>Shift الأيسر</kbd> للتبديل بين وحدات المنتج.</p>
+    </div>
+  </div>
+
+  <h3 id="ch4-6">Images et apparence POS / الصور والمظهر في نقطة البيع</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Dans l'onglet « Visuel » du formulaire produit, vous pouvez :</p>
+      <ul>
+        <li>Ajouter une <strong>image</strong> du produit (avec outil de recadrage intégré)</li>
+        <li>Choisir un <strong>emoji / icône</strong> pour représenter le produit dans la grille du comptoir</li>
+        <li>Sélectionner une <strong>couleur de fond</strong> personnalisée pour le bouton du comptoir</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>في تبويب "المظهر" لنموذج المنتج، يمكنك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>إضافة <strong>صورة</strong> للمنتج (مع أداة اقتصاص مدمجة)</li>
+        <li>اختيار <strong>رمز تعبيري / أيقونة</strong> لتمثيل المنتج في شبكة الكونتوار</li>
+        <li>تحديد <strong>لون خلفية</strong> مخصص لزر الكونتوار</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch4-7">Dates de péremption / تواريخ انتهاء الصلاحية</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour les produits périssables (alimentaire, cosmétique...) :</p>
+      <ul>
+        <li>Activez l'option « Produit périssable » dans la fiche produit</li>
+        <li>Renseignez la date de péremption</li>
+        <li>Le logiciel vous alertera automatiquement lorsque la date approche via les notifications</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>للمنتجات القابلة للتلف (غذائية، مستحضرات تجميل...):</p>
+      <ul style="list-style:none; padding:0;">
+        <li>فعّل خيار "منتج قابل للتلف" في بطاقة المنتج</li>
+        <li>أدخل تاريخ انتهاء الصلاحية</li>
+        <li>البرنامج ينبهك تلقائياً عند اقتراب التاريخ عبر الإشعارات</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch4-8">Archiver un produit / أرشفة منتج</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Lorsque vous arrêtez de vendre un produit, <strong>ne le supprimez pas</strong>. Archivez-le à la place :</p>
+      <ul>
+        <li>Le produit disparaît de la liste active et du comptoir</li>
+        <li>Tout son historique de ventes est conservé intact</li>
+        <li>Les rapports restent précis</li>
+        <li>Vous pouvez le réactiver à tout moment</li>
+      </ul>
+      <p>Pour archiver, ouvrez la fiche du produit et cochez « Archivé ».</p>
+    </div>
+    <div class="bi-ar">
+      <p>عندما تتوقف عن بيع منتج، <strong>لا تحذفه</strong>. قم بأرشفته بدلاً من ذلك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>المنتج يختفي من القائمة النشطة ومن الكونتوار</li>
+        <li>كامل تاريخ المبيعات يبقى سليماً</li>
+        <li>التقارير تبقى دقيقة</li>
+        <li>يمكنك إعادة تفعيله في أي وقت</li>
+      </ul>
+      <p>للأرشفة، افتح بطاقة المنتج وحدد "مؤرشف".</p>
+    </div>
+  </div>
+
+  <h3 id="ch4-9">Import et export Excel / استيراد وتصدير إكسل</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour gagner du temps, vous pouvez importer ou exporter vos produits depuis un fichier Excel :</p>
+      <ul>
+        <li><strong>Exporter</strong> — Cliquez sur « Exporter Excel ». Un fichier contenant tous vos produits est téléchargé.</li>
+        <li><strong>Importer</strong> — Cliquez sur « Importer Excel ». Sélectionnez votre fichier. Un assistant vous aide à faire correspondre les colonnes (nom, prix, code-barres...) avec les champs du logiciel.</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>لتوفير الوقت، يمكنك استيراد أو تصدير منتجاتك من ملف إكسل:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>تصدير</strong> — انقر على "تصدير إكسل". يتم تحميل ملف يحتوي جميع منتجاتك.</li>
+        <li><strong>استيراد</strong> — انقر على "استيراد إكسل". اختر ملفك. مساعد يساعدك في مطابقة الأعمدة (الاسم، السعر، الباركود...) مع حقول البرنامج.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-important">
+    <div class="callout-icon">ℹ️</div>
+    <div><strong>Filtres disponibles / الفلاتر المتاحة :</strong> La liste des produits offre de nombreux filtres : par catégorie, stock faible, stock épuisé, stock négatif, produits périmés, produits à marge négative. Utilisez-les pour identifier rapidement les produits nécessitant une action. / قائمة المنتجات توفر عدة فلاتر: حسب الفئة، مخزون منخفض، مخزون مستنفد، مخزون سالب، منتجات منتهية الصلاحية، منتجات بهامش سالب. استخدمها لتحديد المنتجات التي تحتاج إجراء بسرعة.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                  CHAPITRE 5 — CLIENTS                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch5">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 5</div>
+    <h2>Clients</h2>
+    <div class="ch-ar">العملاء</div>
+  </div>
+
+  <h3 id="ch5-1">Créer et modifier un client / إنشاء وتعديل عميل</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour enregistrer un nouveau client :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Allez dans l'onglet <strong>CLIENTS</strong>.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Nouveau Client »</strong>.</div></div>
+        <div class="step"><div class="step-content">Remplissez les informations :
+          <ul>
+            <li><strong>Nom complet</strong> — Nom du client ou de l'entreprise</li>
+            <li><strong>Téléphone</strong> — Numéro de contact</li>
+            <li><strong>Adresse</strong> — Adresse du client</li>
+            <li><strong>Tarif par défaut</strong> — Détail, Semi-Gros ou Gros</li>
+            <li><strong>Limite de crédit</strong> — Le montant maximum de dette autorisé (optionnel)</li>
+            <li><strong>Registre de commerce</strong>, NIF, NIS — Pour les clients entreprise</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Enregistrer »</strong>.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>لتسجيل عميل جديد:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">اذهب إلى تبويب <strong>العملاء</strong>.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"عميل جديد"</strong>.</div></div>
+        <div class="step"><div class="step-content">املأ المعلومات:
+          <ul style="list-style:none; padding:0;">
+            <li><strong>الاسم الكامل</strong> — اسم العميل أو الشركة</li>
+            <li><strong>الهاتف</strong> — رقم الاتصال</li>
+            <li><strong>العنوان</strong> — عنوان العميل</li>
+            <li><strong>التعريفة الافتراضية</strong> — تجزئة، نصف جملة أو جملة</li>
+            <li><strong>حد الائتمان</strong> — الحد الأقصى للدين المسموح (اختياري)</li>
+            <li><strong>السجل التجاري</strong>، NIF، NIS — للعملاء شركات</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"حفظ"</strong>.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch5-2">Gestion du crédit / إدارة الديون</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Quand un client achète à crédit, sa dette augmente automatiquement. Vous pouvez voir :</p>
+      <ul>
+        <li>Le <strong>solde de crédit actuel</strong> de chaque client</li>
+        <li>Un <strong>graphique d'évolution</strong> de la dette dans le temps</li>
+        <li>La <strong>liste de tous les achats</strong> effectués à crédit</li>
+      </ul>
+      <p>Si vous avez défini une <strong>limite de crédit</strong>, le logiciel bloquera les nouvelles ventes à crédit lorsque la limite est atteinte.</p>
+    </div>
+    <div class="bi-ar">
+      <p>عندما يشتري عميل بالدين، يرتفع دينه تلقائياً. يمكنك رؤية:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>رصيد الدين الحالي</strong> لكل عميل</li>
+        <li><strong>رسم بياني لتطور</strong> الدين عبر الزمن</li>
+        <li><strong>قائمة جميع المشتريات</strong> المنفذة بالدين</li>
+      </ul>
+      <p>إذا حددت <strong>حد ائتمان</strong>، البرنامج سيمنع المبيعات الجديدة بالدين عند بلوغ الحد.</p>
+    </div>
+  </div>
+
+  <h3 id="ch5-3">Règlement de dette / تسوية الدين</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Quand un client vient payer une partie ou la totalité de sa dette :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Sélectionnez le client dans la liste.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Régler crédit »</strong> ou <strong>« Verser un acompte »</strong>.</div></div>
+        <div class="step"><div class="step-content">Saisissez le montant payé et le mode de paiement (espèces, chèque, virement).</div></div>
+        <div class="step"><div class="step-content">Validez. Le solde du client est mis à jour et un reçu peut être imprimé.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>عندما يأتي عميل لدفع جزء أو كامل دينه:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">حدد العميل في القائمة.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"تسوية الدين"</strong> أو <strong>"دفع تسبيق"</strong>.</div></div>
+        <div class="step"><div class="step-content">أدخل المبلغ المدفوع وطريقة الدفع (نقداً، شيك، تحويل).</div></div>
+        <div class="step"><div class="step-content">تأكيد. يتم تحديث رصيد العميل ويمكن طباعة وصل.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch5-4">Historique et relevé de compte / السجل وكشف الحساب</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Le <strong>relevé de compte</strong> est un document récapitulatif de toutes les transactions d'un client :</p>
+      <ul>
+        <li>Chaque achat effectué (date, montant, mode de paiement)</li>
+        <li>Chaque paiement reçu (date, montant)</li>
+        <li>Le solde courant après chaque opération</li>
+      </ul>
+      <p>Cliquez sur « Imprimer relevé de compte » pour générer un document imprimable au format A4 ou A5. Ce document est très utile pour montrer au client le détail de sa dette.</p>
+    </div>
+    <div class="bi-ar">
+      <p><strong>كشف الحساب</strong> هو وثيقة ملخصة لجميع معاملات عميل:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>كل عملية شراء (التاريخ، المبلغ، طريقة الدفع)</li>
+        <li>كل دفعة مستلمة (التاريخ، المبلغ)</li>
+        <li>الرصيد الجاري بعد كل عملية</li>
+      </ul>
+      <p>انقر على "طباعة كشف الحساب" لإنشاء وثيقة قابلة للطباعة بشكل A4 أو A5. هذه الوثيقة مفيدة جداً لإظهار تفاصيل الدين للعميل.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                 CHAPITRE 6 — FOURNISSEURS                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch6">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 6</div>
+    <h2>Fournisseurs</h2>
+    <div class="ch-ar">الموردون</div>
+  </div>
+
+  <h3 id="ch6-1">Créer et modifier un fournisseur / إنشاء وتعديل مورد</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>La gestion des fournisseurs fonctionne de la même manière que celle des clients :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Allez dans l'onglet <strong>FOURNISSEURS</strong>.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Nouveau Fournisseur »</strong>.</div></div>
+        <div class="step"><div class="step-content">Remplissez les informations : nom, téléphone, adresse, e-mail, registre de commerce, dette initiale.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Enregistrer »</strong>.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>إدارة الموردين تعمل بنفس طريقة إدارة العملاء:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">اذهب إلى تبويب <strong>الموردون</strong>.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"مورد جديد"</strong>.</div></div>
+        <div class="step"><div class="step-content">املأ المعلومات: الاسم، الهاتف، العنوان، البريد الإلكتروني، السجل التجاري، الدين الأولي.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"حفظ"</strong>.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch6-2">Dettes et paiements fournisseur / ديون ومدفوعات المورد</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Chaque fois que vous enregistrez un achat sans le payer intégralement, votre dette envers le fournisseur augmente. Vous pouvez :</p>
+      <ul>
+        <li>Voir le <strong>total des dettes</strong> pour chaque fournisseur</li>
+        <li><strong>Payer le fournisseur</strong> — Cliquez sur « Verser acompte » et saisissez le montant payé (en espèces, chèque ou virement)</li>
+        <li>Consulter le <strong>relevé de compte fournisseur</strong> — Historique complet de tous les achats et paiements</li>
+        <li>Voir le <strong>graphique d'évolution</strong> de la dette</li>
+        <li><strong>Exporter</strong> le relevé en Excel ou PDF</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>كل مرة تسجل عملية شراء بدون دفعها بالكامل، يرتفع دينك تجاه المورد. يمكنك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>رؤية <strong>إجمالي الديون</strong> لكل مورد</li>
+        <li><strong>الدفع للمورد</strong> — انقر على "دفع تسبيق" وأدخل المبلغ المدفوع (نقداً، شيك أو تحويل)</li>
+        <li>مراجعة <strong>كشف حساب المورد</strong> — تاريخ كامل لجميع المشتريات والمدفوعات</li>
+        <li>رؤية <strong>رسم بياني لتطور</strong> الدين</li>
+        <li><strong>تصدير</strong> الكشف إلى إكسل أو PDF</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                  CHAPITRE 7 — ACHATS                           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch7">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 7</div>
+    <h2>Achats & Réceptions</h2>
+    <div class="ch-ar">المشتريات والاستلام</div>
+  </div>
+
+  <h3 id="ch7-1">Créer un bon d'achat / إنشاء سند شراء</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Lorsque vous recevez de la marchandise d'un fournisseur :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Allez dans l'onglet <strong>ACHATS</strong>.</div></div>
+        <div class="step"><div class="step-content">Sélectionnez le fournisseur concerné, puis cliquez sur <strong>« Nouveau Bon d'Achat »</strong>.</div></div>
+        <div class="step"><div class="step-content">Ajoutez les produits reçus : cherchez par nom ou scannez le code-barres.</div></div>
+        <div class="step"><div class="step-content">Pour chaque produit, indiquez :
+          <ul>
+            <li>La <strong>quantité reçue</strong></li>
+            <li>Le <strong>prix d'achat unitaire</strong> (si différent du prix habituel)</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">Indiquez le <strong>montant payé</strong> (total ou partiel). La différence sera enregistrée comme dette envers le fournisseur.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Enregistrer »</strong>. Le stock est automatiquement mis à jour.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>عند استلام بضاعة من مورد:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">اذهب إلى تبويب <strong>المشتريات</strong>.</div></div>
+        <div class="step"><div class="step-content">حدد المورد المعني، ثم انقر على <strong>"سند شراء جديد"</strong>.</div></div>
+        <div class="step"><div class="step-content">أضف المنتجات المستلمة: ابحث بالاسم أو امسح الباركود.</div></div>
+        <div class="step"><div class="step-content">لكل منتج، حدد:
+          <ul style="list-style:none; padding:0;">
+            <li><strong>الكمية المستلمة</strong></li>
+            <li><strong>سعر الشراء الوحدوي</strong> (إذا كان مختلفاً عن السعر المعتاد)</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">حدد <strong>المبلغ المدفوع</strong> (كلي أو جزئي). الفرق يُسجل كدين تجاه المورد.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"حفظ"</strong>. يتم تحديث المخزون تلقائياً.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch7-2">Mise à jour automatique des prix / التحديث التلقائي للأسعار</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Lorsque vous enregistrez un achat avec un <strong>nouveau prix d'achat</strong>, le logiciel vous propose de mettre à jour :</p>
+      <ul>
+        <li>Le prix d'achat du produit dans le catalogue</li>
+        <li>Les prix de vente en appliquant automatiquement vos marges habituelles</li>
+      </ul>
+      <p>Cela garantit que vos marges bénéficiaires restent cohérentes même si les prix fournisseur changent.</p>
+    </div>
+    <div class="bi-ar">
+      <p>عند تسجيل شراء بـ<strong>سعر شراء جديد</strong>، البرنامج يقترح تحديث:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>سعر شراء المنتج في الكاتالوج</li>
+        <li>أسعار البيع بتطبيق هوامشك المعتادة تلقائياً</li>
+      </ul>
+      <p>هذا يضمن بقاء هوامش ربحك متسقة حتى لو تغيرت أسعار المورد.</p>
+    </div>
+  </div>
+
+  <h3 id="ch7-3">Créer un produit pendant l'achat / إنشاء منتج أثناء الشراء</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Si un produit dans l'arrivage n'existe pas encore dans votre catalogue, vous pouvez le créer directement depuis l'écran d'achat sans quitter le bon de réception. Cliquez sur « Créer nouveau produit » et remplissez les informations de base.</p>
+    </div>
+    <div class="bi-ar">
+      <p>إذا كان منتج في الشحنة غير موجود في الكاتالوج، يمكنك إنشاؤه مباشرة من شاشة الشراء بدون مغادرة سند الاستلام. انقر على "إنشاء منتج جديد" واملأ المعلومات الأساسية.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--              CHAPITRE 8 — POINT DE VENTE (POS)                -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch8">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 8</div>
+    <h2>Point de Vente (Comptoir)</h2>
+    <div class="ch-ar">نقطة البيع (الكونتوار)</div>
+  </div>
+
+  <p class="section-intro">Le Point de Vente est le cœur du logiciel. C'est ici que vous encaissez vos clients au quotidien. Cette section est la plus détaillée du manuel car elle couvre toutes les opérations qu'un vendeur effectue chaque jour.</p>
+
+  <h3 id="ch8-1">L'écran du comptoir / شاشة الكونتوار</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>L'écran du comptoir est divisé en trois zones principales :</p>
+      <ul>
+        <li><strong>Zone gauche — Catalogue</strong> : Affiche tous vos produits sous forme de grille tactile ou de liste. Vous pouvez filtrer par catégorie, rechercher par nom ou scanner un code-barres.</li>
+        <li><strong>Zone centrale — Panier</strong> : Affiche les articles ajoutés à la vente en cours. Chaque ligne montre le nom du produit, la quantité, le prix unitaire et le total.</li>
+        <li><strong>Zone droite — Actions</strong> : Boutons d'action rapide (Unité, Imprimer, Quantité +/-, Supprimer, Devis, Balance, Suspendre, Annuler).</li>
+      </ul>
+      <p>En bas de l'écran, vous voyez le <strong>total du panier</strong> et le bouton <strong>« Encaisser »</strong> pour valider la vente.</p>
+    </div>
+    <div class="bi-ar">
+      <p>شاشة الكونتوار مقسمة إلى ثلاث مناطق رئيسية:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>المنطقة اليسرى — الكاتالوج</strong>: تعرض جميع منتجاتك على شكل شبكة لمس أو قائمة. يمكنك التصفية حسب الفئة، البحث بالاسم أو مسح الباركود.</li>
+        <li><strong>المنطقة الوسطى — السلة</strong>: تعرض المواد المضافة للبيع الحالي. كل سطر يظهر اسم المنتج، الكمية، السعر الوحدوي والمجموع.</li>
+        <li><strong>المنطقة اليمنى — الإجراءات</strong>: أزرار إجراء سريعة (الوحدة، طباعة، الكمية +/-، حذف، عرض أسعار، الميزان، تعليق، إلغاء).</li>
+      </ul>
+      <p>في أسفل الشاشة، ترى <strong>مجموع السلة</strong> وزر <strong>"تحصيل"</strong> لتأكيد البيع.</p>
+    </div>
+  </div>
+
+  <h3 id="ch8-2">Chercher et ajouter un produit / البحث وإضافة منتج</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Il existe plusieurs façons d'ajouter un produit au panier :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content"><strong>Cliquer sur le produit</strong> dans la grille du catalogue. Un clic ajoute une unité au panier.</div></div>
+        <div class="step"><div class="step-content"><strong>Scanner le code-barres</strong> avec votre douchette. Le produit est automatiquement reconnu et ajouté.</div></div>
+        <div class="step"><div class="step-content"><strong>Appuyer sur la barre Espace</strong> pour ouvrir la recherche avancée. Tapez le nom, la marque ou la référence du produit.</div></div>
+        <div class="step"><div class="step-content"><strong>Utiliser le dock flottant</strong> (barre du bas) pour accéder aux produits favoris d'un seul clic. Appuyez sur <kbd>Tab</kbd> pour l'afficher.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>هناك عدة طرق لإضافة منتج إلى السلة:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content"><strong>النقر على المنتج</strong> في شبكة الكاتالوج. نقرة واحدة تضيف وحدة واحدة للسلة.</div></div>
+        <div class="step"><div class="step-content"><strong>مسح الباركود</strong> بالماسحة. يتم التعرف على المنتج وإضافته تلقائياً.</div></div>
+        <div class="step"><div class="step-content"><strong>الضغط على مفتاح المسافة</strong> لفتح البحث المتقدم. اكتب الاسم أو العلامة أو المرجع.</div></div>
+        <div class="step"><div class="step-content"><strong>استخدام الشريط العائم</strong> (في الأسفل) للوصول السريع للمنتجات المفضلة. اضغط <kbd>Tab</kbd> لعرضه.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-3">Scanner un code-barres / مسح الباركود</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Stock Pro détecte automatiquement les douchettes de codes-barres. Il suffit de scanner le produit :</p>
+      <ul>
+        <li>Le logiciel reconnaît le code-barres principal du produit</li>
+        <li>Il reconnaît aussi les codes-barres secondaires (cartons, packs)</li>
+        <li>Il reconnaît les codes-barres des unités de conditionnement</li>
+        <li>Compatible avec les claviers AZERTY (français) et QWERTY</li>
+      </ul>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Astuce :</strong> Si votre douchette est en mode AZERTY et produit des caractères incorrects, activez l'option « Compatibilité AZERTY » dans les Paramètres.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>ستوك برو يكتشف تلقائياً ماسحات الباركود. يكفي مسح المنتج:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>البرنامج يتعرف على الباركود الرئيسي للمنتج</li>
+        <li>يتعرف أيضاً على الباركود الثانوي (الكراتين، العبوات)</li>
+        <li>يتعرف على باركود وحدات التعبئة</li>
+        <li>متوافق مع لوحات المفاتيح AZERTY و QWERTY</li>
+      </ul>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>نصيحة:</strong> إذا كانت الماسحة بنظام AZERTY وتنتج أحرف خاطئة، فعّل خيار "توافق AZERTY" في الإعدادات.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-4">Modifier la quantité / تعديل الكمية</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Plusieurs méthodes pour modifier la quantité d'un produit dans le panier :</p>
+      <ul>
+        <li><strong>Boutons +/−</strong> dans le panneau d'actions à droite</li>
+        <li><strong>Touches <kbd>+</kbd> et <kbd>−</kbd></strong> du clavier</li>
+        <li><strong>Saisie directe</strong> — Après avoir ajouté un article, tapez directement le nombre souhaité sur le clavier (ex: tapez <kbd>5</kbd> pour mettre la quantité à 5)</li>
+        <li><strong>Double-clic sur la ligne</strong> dans le panier pour ouvrir l'éditeur détaillé</li>
+        <li><strong>Appui long sur le produit</strong> dans la grille pour accéder aux boutons rapides (+1, +5, -1, -5)</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>عدة طرق لتعديل كمية منتج في السلة:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>أزرار +/−</strong> في لوحة الإجراءات على اليمين</li>
+        <li><strong>مفاتيح <kbd>+</kbd> و <kbd>−</kbd></strong> من لوحة المفاتيح</li>
+        <li><strong>إدخال مباشر</strong> — بعد إضافة مادة، اكتب الرقم المطلوب مباشرة من لوحة المفاتيح</li>
+        <li><strong>النقر المزدوج على السطر</strong> في السلة لفتح المحرر المفصل</li>
+        <li><strong>الضغط المطول على المنتج</strong> في الشبكة للوصول للأزرار السريعة (+1، +5، -1، -5)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch8-5">Appliquer une remise / تطبيق تخفيض</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Vous pouvez appliquer une remise de deux façons :</p>
+      <ul>
+        <li><strong>Remise globale</strong> — Appuyez sur <kbd>F2</kbd> ou cliquez sur le bouton « Remise ». Saisissez le montant de la remise en Dinars. Ce montant sera soustrait du total.</li>
+        <li><strong>Remise par article</strong> — Double-cliquez sur un article dans le panier et modifiez son prix unitaire directement.</li>
+      </ul>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div><strong>Attention :</strong> Si le prix modifié est inférieur au prix d'achat, un avertissement rouge s'affiche pour vous prévenir que vous vendez à perte.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>يمكنك تطبيق تخفيض بطريقتين:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>تخفيض شامل</strong> — اضغط <kbd>F2</kbd> أو انقر على زر "تخفيض". أدخل مبلغ التخفيض بالدينار. سيتم خصمه من المجموع.</li>
+        <li><strong>تخفيض لكل مادة</strong> — انقر مرتين على مادة في السلة وعدّل سعرها الوحدوي مباشرة.</li>
+      </ul>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div><strong>تنبيه:</strong> إذا كان السعر المعدل أقل من سعر الشراء، يظهر تحذير أحمر لإعلامك بأنك تبيع بخسارة.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-6">Changer le prix ou le tarif / تغيير السعر أو التعريفة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Stock Pro gère plusieurs niveaux de prix pour chaque produit :</p>
+      <ul>
+        <li><strong>Détail</strong> — Prix de vente au détail (par unité)</li>
+        <li><strong>Semi-Gros</strong> — Prix intermédiaire pour les quantités moyennes</li>
+        <li><strong>Gros</strong> — Prix de gros pour les grandes quantités</li>
+        <li><strong>Crédit</strong> — Prix spécial pour les ventes à crédit</li>
+      </ul>
+      <p>Pour changer de tarif, appuyez sur <kbd>F1</kbd>. Le tarif change cycliquement : Détail → Semi-Gros → Gros → Crédit. Tous les prix du panier se mettent à jour automatiquement.</p>
+      <p>Lorsque vous sélectionnez un client, le tarif passe automatiquement au tarif préféré de ce client.</p>
+    </div>
+    <div class="bi-ar">
+      <p>ستوك برو يدير عدة مستويات أسعار لكل منتج:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>تجزئة</strong> — سعر البيع بالوحدة</li>
+        <li><strong>نصف جملة</strong> — سعر متوسط للكميات المتوسطة</li>
+        <li><strong>جملة</strong> — سعر الجملة للكميات الكبيرة</li>
+        <li><strong>دين</strong> — سعر خاص للبيع بالدين</li>
+      </ul>
+      <p>لتغيير التعريفة، اضغط <kbd>F1</kbd>. تتغير التعريفة دورياً: تجزئة ← نصف جملة ← جملة ← دين. جميع الأسعار في السلة تتحدث تلقائياً.</p>
+      <p>عند اختيار عميل، تنتقل التعريفة تلقائياً إلى التعريفة المفضلة لهذا العميل.</p>
+    </div>
+  </div>
+
+  <h3 id="ch8-7">Vente au poids / البيع بالوزن</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour les produits vendus au poids (fruits, légumes, viande, épices...) :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Lorsque vous ajoutez un produit marqué « au poids », une fenêtre spéciale s'ouvre automatiquement.</div></div>
+        <div class="step"><div class="step-content"><strong>Mode « Saisir en DA »</strong> — Entrez le montant total que le client doit payer. Le logiciel calcule automatiquement le poids correspondant.</div></div>
+        <div class="step"><div class="step-content"><strong>Mode « Saisir en Poids »</strong> — Entrez le poids (ex: 0,500 kg). Le logiciel calcule automatiquement le prix.</div></div>
+        <div class="step"><div class="step-content">Validez avec le bouton « Ajouter » ou la touche <kbd>Ctrl Droit</kbd>.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>للمنتجات المباعة بالوزن (فواكه، خضر، لحوم، توابل...):</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">عند إضافة منتج مُعلّم "بالوزن"، تفتح نافذة خاصة تلقائياً.</div></div>
+        <div class="step"><div class="step-content"><strong>وضع "إدخال بالدينار"</strong> — أدخل المبلغ الإجمالي الذي يجب دفعه. البرنامج يحسب الوزن المقابل تلقائياً.</div></div>
+        <div class="step"><div class="step-content"><strong>وضع "إدخال بالوزن"</strong> — أدخل الوزن (مثال: 0.500 كغ). البرنامج يحسب السعر تلقائياً.</div></div>
+        <div class="step"><div class="step-content">تأكيد بزر "إضافة" أو مفتاح <kbd>Ctrl الأيمن</kbd>.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-8">Sélectionner un client / اختيار عميل</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Par défaut, la vente est affectée au <strong>« Client comptoir »</strong> (client anonyme). Pour affecter la vente à un client spécifique :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Cliquez sur le nom du client affiché en haut du panier, ou sur le bouton « Client ».</div></div>
+        <div class="step"><div class="step-content">La liste de vos clients s'affiche. Recherchez par nom, nom arabe ou code.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur le client souhaité. Ses informations et son solde de crédit apparaissent.</div></div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Astuce :</strong> Vous pouvez créer un nouveau client directement depuis cet écran sans quitter le comptoir. Cliquez sur « Nouveau client » et remplissez juste le nom.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>افتراضياً، يتم تخصيص البيع لـ <strong>"عميل الكونتوار"</strong> (عميل مجهول). لتخصيص البيع لعميل محدد:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">انقر على اسم العميل المعروض أعلى السلة، أو على زر "العميل".</div></div>
+        <div class="step"><div class="step-content">تظهر قائمة عملائك. ابحث بالاسم أو الاسم العربي أو الرمز.</div></div>
+        <div class="step"><div class="step-content">انقر على العميل المطلوب. تظهر معلوماته ورصيد دينه.</div></div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>نصيحة:</strong> يمكنك إنشاء عميل جديد مباشرة من هذه الشاشة بدون مغادرة الكونتوار. انقر على "عميل جديد" واملأ الاسم فقط.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-9">Encaisser et payer / التحصيل والدفع</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour valider la vente et encaisser le client :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Appuyez sur <kbd>Shift Droit</kbd> ou cliquez sur le bouton <strong>« Encaisser »</strong>.</div></div>
+        <div class="step"><div class="step-content">La fenêtre de paiement s'ouvre. Choisissez le mode de paiement :</div></div>
+      </div>
+      <table>
+        <tr><th>Mode</th><th>Description</th></tr>
+        <tr><td><strong>Espèces</strong></td><td>Le client paie en liquide. Entrez le montant remis et le rendu de monnaie est calculé automatiquement.</td></tr>
+        <tr><td><strong>Crédit</strong></td><td>La vente est enregistrée comme dette du client. Un client doit obligatoirement être sélectionné.</td></tr>
+        <tr><td><strong>Mixte</strong></td><td>Le client paie une partie en espèces et le reste est mis en crédit. Entrez le montant payé.</td></tr>
+        <tr><td><strong>Chèque / Carte</strong></td><td>Paiement par chèque bancaire ou carte de paiement.</td></tr>
+      </table>
+      <div class="callout callout-important">
+        <div class="callout-icon">ℹ️</div>
+        <div><strong>Important :</strong> Pour vendre à crédit, vous devez obligatoirement sélectionner un client. Le logiciel refuse le crédit pour un client anonyme.</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>لتأكيد البيع وتحصيل الأموال من العميل:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">اضغط <kbd>Shift الأيمن</kbd> أو انقر على زر <strong>"تحصيل"</strong>.</div></div>
+        <div class="step"><div class="step-content">تفتح نافذة الدفع. اختر طريقة الدفع:</div></div>
+      </div>
+      <table class="rtl-table">
+        <tr><th>الطريقة</th><th>الوصف</th></tr>
+        <tr><td><strong>نقداً</strong></td><td>العميل يدفع نقداً. أدخل المبلغ المستلم ويُحسب الباقي تلقائياً.</td></tr>
+        <tr><td><strong>بالدين</strong></td><td>يُسجل البيع كدين على العميل. يجب اختيار عميل محدد.</td></tr>
+        <tr><td><strong>مختلط</strong></td><td>العميل يدفع جزءاً نقداً والباقي دين. أدخل المبلغ المدفوع.</td></tr>
+        <tr><td><strong>شيك / بطاقة</strong></td><td>الدفع بشيك بنكي أو بطاقة دفع.</td></tr>
+      </table>
+      <div class="callout callout-important">
+        <div class="callout-icon">ℹ️</div>
+        <div><strong>مهم:</strong> للبيع بالدين، يجب اختيار عميل محدد. البرنامج يرفض الدين لعميل مجهول.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-10">Impression du ticket / طباعة التذكرة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Après la validation de la vente, le ticket de caisse s'imprime automatiquement sur votre imprimante thermique (si configurée). Vous pouvez aussi :</p>
+      <ul>
+        <li>Appuyer sur <kbd>F11</kbd> pour imprimer un ticket sans sauvegarder</li>
+        <li>Réimprimer un ancien ticket depuis l'historique des ventes</li>
+        <li>Choisir le format d'impression : Ticket 80mm, Ticket 58mm, Facture A4, Facture A5</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>بعد تأكيد البيع، تُطبع تذكرة الصندوق تلقائياً على الطابعة الحرارية (إذا تم إعدادها). يمكنك أيضاً:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>الضغط على <kbd>F11</kbd> لطباعة تذكرة بدون حفظ</li>
+        <li>إعادة طباعة تذكرة قديمة من سجل المبيعات</li>
+        <li>اختيار شكل الطباعة: تذكرة 80مم، تذكرة 58مم، فاتورة A4، فاتورة A5</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch8-11">Suspendre et rappeler un ticket / تعليق واستعادة تذكرة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Si un client doit partir chercher de l'argent ou si vous devez servir un autre client rapidement :</p>
+      <ul>
+        <li><strong>Suspendre</strong> — Appuyez sur <kbd>Alt Droit</kbd>. Le panier actuel est mis en attente.</li>
+        <li><strong>Rappeler</strong> — Appuyez sur <kbd>Alt Gauche</kbd>. La liste des tickets suspendus apparaît. Sélectionnez celui à reprendre.</li>
+      </ul>
+      <p>Vous pouvez avoir plusieurs tickets suspendus en même temps. Chaque ticket garde son contenu intact.</p>
+    </div>
+    <div class="bi-ar">
+      <p>إذا كان العميل يريد الذهاب لإحضار المال أو تريد خدمة عميل آخر بسرعة:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>تعليق</strong> — اضغط <kbd>Alt الأيمن</kbd>. تُوضع السلة الحالية في الانتظار.</li>
+        <li><strong>استعادة</strong> — اضغط <kbd>Alt الأيسر</kbd>. تظهر قائمة التذاكر المعلقة. اختر التي تريد استكمالها.</li>
+      </ul>
+      <p>يمكنك تعليق عدة تذاكر في نفس الوقت. كل تذكرة تحتفظ بمحتواها كاملاً.</p>
+    </div>
+  </div>
+
+  <h3 id="ch8-12">Historique des ventes et retours / سجل المبيعات والمرتجعات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour consulter l'historique de vos ventes ou effectuer un retour :</p>
+      <ul>
+        <li>Utilisez les touches <kbd>←</kbd> et <kbd>→</kbd> pour naviguer entre les ventes passées</li>
+        <li>Ouvrez l'historique complet pour rechercher par numéro de ticket ou nom de client</li>
+        <li>Pour un <strong>retour</strong>, sélectionnez le ticket puis cliquez sur « Annuler la vente ». Le stock est automatiquement restauré et le montant est remboursé.</li>
+        <li>Pour un <strong>échange</strong>, appuyez sur <kbd>Ctrl+R</kbd>, scannez le produit retourné. Il apparaît avec une quantité négative (-1) dans le panier.</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>للاطلاع على سجل مبيعاتك أو إجراء مرتجع:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>استخدم مفاتيح <kbd>←</kbd> و <kbd>→</kbd> للتنقل بين المبيعات السابقة</li>
+        <li>افتح السجل الكامل للبحث برقم التذكرة أو اسم العميل</li>
+        <li>لـ<strong>مرتجع</strong>، اختر التذكرة ثم انقر على "إلغاء البيع". يُستعاد المخزون تلقائياً ويُرد المبلغ.</li>
+        <li>لـ<strong>تبديل</strong>، اضغط <kbd>Ctrl+R</kbd>، امسح المنتج المرتجع. يظهر بكمية سالبة (-1) في السلة.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch8-13">Article divers (non référencé) / مادة متنوعة (غير مسجلة)</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour vendre un produit qui n'est pas enregistré dans votre catalogue :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Cliquez sur le bouton « Article Divers » dans le panneau d'actions.</div></div>
+        <div class="step"><div class="step-content">Donnez un nom à l'article (ex: « Service réparation »).</div></div>
+        <div class="step"><div class="step-content">Saisissez le prix de vente.</div></div>
+        <div class="step"><div class="step-content">Validez. L'article est ajouté au panier sans affecter votre stock.</div></div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>لبيع منتج غير مسجل في الكاتالوج:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">انقر على زر "مادة متنوعة" في لوحة الإجراءات.</div></div>
+        <div class="step"><div class="step-content">أعطِ اسماً للمادة (مثال: "خدمة إصلاح").</div></div>
+        <div class="step"><div class="step-content">أدخل سعر البيع.</div></div>
+        <div class="step"><div class="step-content">تأكيد. تُضاف المادة للسلة بدون التأثير على مخزونك.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="ch8-14">Raccourcis clavier / اختصارات لوحة المفاتيح</h3>
+  <table class="shortcut-table">
+    <tr><th>Touche / المفتاح</th><th>Action (FR)</th><th style="direction:rtl; text-align:right; font-family:'Noto Sans Arabic'">الإجراء (AR)</th></tr>
+    <tr><td><kbd>Espace</kbd></td><td>Rechercher un produit par nom</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">البحث عن منتج بالاسم</td></tr>
+    <tr><td><kbd>Espace×2</kbd></td><td>Rechercher par référence</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">البحث بالمرجع</td></tr>
+    <tr><td><kbd>F1</kbd></td><td>Changer le tarif (Détail/Gros)</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">تغيير التعريفة</td></tr>
+    <tr><td><kbd>F2</kbd></td><td>Appliquer une remise</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">تطبيق تخفيض</td></tr>
+    <tr><td><kbd>F6</kbd></td><td>Créer un devis</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">إنشاء عرض أسعار</td></tr>
+    <tr><td><kbd>F11</kbd></td><td>Imprimer le ticket</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">طباعة التذكرة</td></tr>
+    <tr><td><kbd>Tab</kbd></td><td>Afficher le dock des favoris</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">عرض شريط المفضلات</td></tr>
+    <tr><td><kbd>Shift ⇨</kbd></td><td>Encaisser la vente</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">تحصيل البيع</td></tr>
+    <tr><td><kbd>Shift ⇦</kbd></td><td>Changer l'unité de l'article</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">تغيير وحدة المادة</td></tr>
+    <tr><td><kbd>Alt ⇨</kbd></td><td>Suspendre le ticket</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">تعليق التذكرة</td></tr>
+    <tr><td><kbd>Alt ⇦</kbd></td><td>Rappeler un ticket</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">استعادة تذكرة</td></tr>
+    <tr><td><kbd>+</kbd> / <kbd>−</kbd></td><td>Augmenter / diminuer la quantité</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">زيادة / إنقاص الكمية</td></tr>
+    <tr><td><kbd>Retour arrière</kbd></td><td>Supprimer l'article sélectionné</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">حذف المادة المحددة</td></tr>
+    <tr><td><kbd>Suppr</kbd></td><td>Vider tout le panier</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">إفراغ السلة بالكامل</td></tr>
+    <tr><td><kbd>Ctrl+R</kbd></td><td>Mode retour produit</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">وضع إرجاع المنتج</td></tr>
+    <tr><td><kbd>Ctrl+V</kbd></td><td>Verrouiller l'écran</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">قفل الشاشة</td></tr>
+    <tr><td><kbd>↑</kbd> / <kbd>↓</kbd></td><td>Naviguer dans le panier</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">التنقل في السلة</td></tr>
+    <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Naviguer entre les ventes</td><td style="direction:rtl; font-family:'Noto Sans Arabic'">التنقل بين المبيعات</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--               CHAPITRE 9 — DOCUMENTS & TVA                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch9">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 9</div>
+    <h2>Documents commerciaux</h2>
+    <div class="ch-ar">الوثائق التجارية</div>
+  </div>
+
+  <h3 id="ch9-1">Types de documents / أنواع الوثائق</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <table>
+        <tr><th>Document</th><th>Usage</th></tr>
+        <tr><td><strong>Facture</strong></td><td>Document officiel de vente avec détail des articles et montants</td></tr>
+        <tr><td><strong>Ticket de caisse</strong></td><td>Reçu rapide pour les ventes au comptoir</td></tr>
+        <tr><td><strong>Devis / Proforma</strong></td><td>Proposition de prix sans engagement, ne modifie pas le stock</td></tr>
+        <tr><td><strong>Bon de livraison</strong></td><td>Accompagne la marchandise livrée au client</td></tr>
+        <tr><td><strong>Bon de commande</strong></td><td>Commande passée par un client</td></tr>
+        <tr><td><strong>Bon de retour</strong></td><td>Enregistrement d'un retour de marchandise</td></tr>
+      </table>
+    </div>
+    <div class="bi-ar">
+      <table class="rtl-table">
+        <tr><th>الوثيقة</th><th>الاستخدام</th></tr>
+        <tr><td><strong>فاتورة</strong></td><td>وثيقة بيع رسمية مع تفاصيل المواد والمبالغ</td></tr>
+        <tr><td><strong>تذكرة صندوق</strong></td><td>وصل سريع لمبيعات الكونتوار</td></tr>
+        <tr><td><strong>عرض أسعار / بروفورما</strong></td><td>اقتراح سعر بدون التزام، لا يؤثر على المخزون</td></tr>
+        <tr><td><strong>سند تسليم</strong></td><td>يرافق البضاعة المُسلّمة للعميل</td></tr>
+        <tr><td><strong>سند طلب</strong></td><td>طلب مقدم من عميل</td></tr>
+        <tr><td><strong>سند إرجاع</strong></td><td>تسجيل إرجاع بضاعة</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 id="ch9-4">TVA pour les factures entreprise / الضريبة على القيمة المضافة لفواتير الشركات</h3>
+  <div class="callout callout-important" style="margin: 20px 0;">
+    <div class="callout-icon">ℹ️</div>
+    <div style="font-size: 13px;">
+      <strong>Information importante sur la TVA :</strong><br><br>
+      Les ventes au comptoir (Point de Vente) fonctionnent <strong>sans TVA</strong>. C'est le fonctionnement normal du logiciel, adapté au commerce algérien.<br><br>
+      La TVA <strong>n'est utilisée que dans un seul cas</strong> : lorsque vous préparez une facture destinée à une <strong>entreprise</strong>.<br><br>
+      Dans ce cas, lors de la prévisualisation de la facture, vous pouvez <strong>cocher la case « Appliquer la TVA »</strong>. La TVA sera alors calculée et affichée sur le document imprimé uniquement.<br><br>
+      <strong>En résumé :</strong> Ne vous préoccupez pas de la TVA lors de vos ventes quotidiennes. Elle ne s'applique que lorsque vous préparez volontairement une facture officielle pour une entreprise.
+    </div>
+  </div>
+  <div class="ar-block">
+    <h4>معلومة مهمة حول الضريبة على القيمة المضافة (TVA)</h4>
+    <p>مبيعات الكونتوار (نقطة البيع) تعمل <strong>بدون ضريبة على القيمة المضافة</strong>. هذا هو الأداء الطبيعي للبرنامج، المناسب للتجارة الجزائرية.</p>
+    <p>الضريبة على القيمة المضافة <strong>تُستخدم في حالة واحدة فقط</strong>: عند إعداد فاتورة موجهة لـ<strong>شركة</strong>.</p>
+    <p>في هذه الحالة، عند معاينة الفاتورة، يمكنك <strong>تحديد خانة "تطبيق الضريبة على القيمة المضافة"</strong>. ستُحسب الضريبة وتُعرض على الوثيقة المطبوعة فقط.</p>
+    <p><strong>خلاصة:</strong> لا تقلق بشأن الضريبة على القيمة المضافة أثناء مبيعاتك اليومية. تُطبق فقط عند إعداد فاتورة رسمية لشركة بإرادتك.</p>
+  </div>
+
+  <h3 id="ch9-2">Créer et modifier un document / إنشاء وتعديل وثيقة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>L'onglet <strong>Factures</strong> affiche l'historique complet de tous vos documents. Vous pouvez :</p>
+      <ul>
+        <li>Rechercher par numéro de document ou nom de client</li>
+        <li>Filtrer par type (Facture, Ticket, Devis, Bon de livraison...)</li>
+        <li>Filtrer par statut (Validé, Annulé)</li>
+        <li>Filtrer par période (dates personnalisées)</li>
+        <li>Modifier un document existant (quantités, prix, remise, client)</li>
+        <li>Convertir un devis en facture ou en bon de livraison</li>
+        <li>Recharger un document dans le comptoir pour le modifier</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>تبويب <strong>الفواتير</strong> يعرض السجل الكامل لجميع وثائقك. يمكنك:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>البحث برقم الوثيقة أو اسم العميل</li>
+        <li>التصفية حسب النوع (فاتورة، تذكرة، عرض أسعار، سند تسليم...)</li>
+        <li>التصفية حسب الحالة (مؤكد، ملغي)</li>
+        <li>التصفية حسب الفترة (تواريخ مخصصة)</li>
+        <li>تعديل وثيقة موجودة (الكميات، الأسعار، التخفيض، العميل)</li>
+        <li>تحويل عرض أسعار إلى فاتورة أو سند تسليم</li>
+        <li>إعادة تحميل وثيقة في الكونتوار لتعديلها</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch9-3">Prévisualisation et impression / المعاينة والطباعة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Cliquez sur un document puis sur « Aperçu » pour le prévisualiser. Vous pouvez choisir le format :</p>
+      <ul>
+        <li><strong>Ticket thermique</strong> (80mm ou 58mm) — Pour les imprimantes de caisse</li>
+        <li><strong>Facture A4</strong> — Document officiel avec en-tête de votre entreprise</li>
+        <li><strong>Facture A5</strong> — Format demi-page</li>
+        <li><strong>Bon de livraison</strong> — Avec ou sans prix affichés</li>
+      </ul>
+      <p>Les montants sont automatiquement convertis en lettres (en français et en arabe) sur les factures imprimées.</p>
+    </div>
+    <div class="bi-ar">
+      <p>انقر على وثيقة ثم على "معاينة" لمشاهدتها. يمكنك اختيار الشكل:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>تذكرة حرارية</strong> (80مم أو 58مم) — لطابعات الصندوق</li>
+        <li><strong>فاتورة A4</strong> — وثيقة رسمية مع ترويسة شركتك</li>
+        <li><strong>فاتورة A5</strong> — نصف صفحة</li>
+        <li><strong>سند تسليم</strong> — مع أو بدون عرض الأسعار</li>
+      </ul>
+      <p>المبالغ تُحوّل تلقائياً إلى كلمات (بالعربية والفرنسية) على الفواتير المطبوعة.</p>
+    </div>
+  </div>
+
+  <h3 id="ch9-5">Annuler un document / إلغاء وثيقة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour annuler une vente ou une facture :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Ouvrez l'onglet <strong>Factures</strong>.</div></div>
+        <div class="step"><div class="step-content">Trouvez le document à annuler.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Annuler le document »</strong>.</div></div>
+        <div class="step"><div class="step-content">Confirmez l'annulation.</div></div>
+      </div>
+      <p>L'annulation provoque automatiquement :</p>
+      <ul>
+        <li>✅ Le stock des produits vendus est restauré</li>
+        <li>✅ Le solde de crédit du client est corrigé (si c'était une vente à crédit)</li>
+        <li>✅ Un mouvement de remboursement est enregistré en caisse</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>لإلغاء بيع أو فاتورة:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">افتح تبويب <strong>الفواتير</strong>.</div></div>
+        <div class="step"><div class="step-content">ابحث عن الوثيقة المراد إلغاؤها.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"إلغاء الوثيقة"</strong>.</div></div>
+        <div class="step"><div class="step-content">أكّد الإلغاء.</div></div>
+      </div>
+      <p>الإلغاء يتسبب تلقائياً في:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>✅ استعادة مخزون المنتجات المباعة</li>
+        <li>✅ تصحيح رصيد دين العميل (إذا كان البيع بالدين)</li>
+        <li>✅ تسجيل حركة استرداد في الصندوق</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                 CHAPITRE 10 — CAISSE                           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch10">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 10</div>
+    <h2>Caisse</h2>
+    <div class="ch-ar">الصندوق</div>
+  </div>
+
+  <h3 id="ch10-1">Ouvrir la caisse / فتح الصندوق</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Avant de commencer à vendre, vous devez ouvrir une session de caisse :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Allez dans l'onglet <strong>CAISSE</strong> ou accédez au <strong>COMPTOIR</strong>.</div></div>
+        <div class="step"><div class="step-content">La fenêtre d'ouverture s'affiche. Saisissez le <strong>fond de caisse</strong> — c'est le montant d'argent liquide que vous mettez dans le tiroir-caisse en début de journée.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Ouvrir la caisse »</strong>. La session démarre.</div></div>
+      </div>
+      <p>Le tableau de bord de la caisse affiche en temps réel :</p>
+      <ul>
+        <li>💵 Le fond de caisse d'ouverture</li>
+        <li>📈 Les ventes en espèces de la session</li>
+        <li>💰 Les recettes supplémentaires (recouvrements de dettes clients)</li>
+        <li>📉 Les sorties (dépenses, salaires, avances)</li>
+        <li>🧮 Le <strong>solde théorique</strong> calculé automatiquement</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>قبل البدء في البيع، يجب فتح جلسة صندوق:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">اذهب إلى تبويب <strong>الصندوق</strong> أو إلى <strong>الكونتوار</strong>.</div></div>
+        <div class="step"><div class="step-content">تظهر نافذة الفتح. أدخل <strong>رأس المال الافتتاحي</strong> — المبلغ النقدي الذي تضعه في الدرج في بداية اليوم.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"فتح الصندوق"</strong>. تبدأ الجلسة.</div></div>
+      </div>
+      <p>لوحة الصندوق تعرض في الوقت الفعلي:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>💵 رأس المال الافتتاحي</li>
+        <li>📈 المبيعات النقدية للجلسة</li>
+        <li>💰 الإيرادات الإضافية (تحصيل ديون العملاء)</li>
+        <li>📉 المصاريف (نفقات، رواتب، سلف)</li>
+        <li>🧮 <strong>الرصيد النظري</strong> المحسوب تلقائياً</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch10-2">Entrées et sorties de caisse / مداخيل ومصاريف الصندوق</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pendant la session, vous pouvez enregistrer des mouvements de caisse manuels :</p>
+      <h4>Sorties (Dépenses)</h4>
+      <ul>
+        <li><strong>Dépense opérationnelle</strong> — Loyer, transport, électricité, eau, internet...</li>
+        <li><strong>Avance salaire</strong> — Avance versée à un employé</li>
+        <li><strong>Paiement fournisseur</strong> — Acompte versé à un fournisseur</li>
+      </ul>
+      <h4>Entrées (Recettes hors vente)</h4>
+      <ul>
+        <li><strong>Recouvrement de dette client</strong> — Un client vient payer sa dette</li>
+        <li><strong>Recette diverse</strong> — Tout autre revenu</li>
+      </ul>
+      <p>Chaque mouvement est automatiquement pris en compte dans le calcul du solde de caisse.</p>
+    </div>
+    <div class="bi-ar">
+      <p>خلال الجلسة، يمكنك تسجيل حركات صندوق يدوية:</p>
+      <h4>المصاريف</h4>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>نفقة تشغيلية</strong> — إيجار، نقل، كهرباء، ماء، إنترنت...</li>
+        <li><strong>سلفة راتب</strong> — سلفة مدفوعة لموظف</li>
+        <li><strong>دفع لمورد</strong> — تسبيق مدفوع لمورد</li>
+      </ul>
+      <h4>المداخيل (إيرادات غير البيع)</h4>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>تحصيل دين عميل</strong> — عميل يأتي لدفع دينه</li>
+        <li><strong>إيراد متنوع</strong> — أي دخل آخر</li>
+      </ul>
+      <p>كل حركة تُحتسب تلقائياً في حساب رصيد الصندوق.</p>
+    </div>
+  </div>
+
+  <h3 id="ch10-3">Clôturer la caisse / إغلاق الصندوق</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>En fin de journée, clôturez votre caisse :</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Clôturer la caisse »</strong>.</div></div>
+        <div class="step"><div class="step-content">Comptez l'argent physiquement dans le tiroir-caisse.</div></div>
+        <div class="step"><div class="step-content">Saisissez le <strong>montant compté</strong>.</div></div>
+        <div class="step"><div class="step-content">Le logiciel compare avec le montant théorique et affiche <strong>l'écart</strong> :
+          <ul>
+            <li>✅ Écart = 0 — Parfait, la caisse est juste !</li>
+            <li>⚠️ Écart positif — Vous avez plus d'argent que prévu</li>
+            <li>❌ Écart négatif — Il manque de l'argent</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">Ajoutez une <strong>note de clôture</strong> (optionnel) pour expliquer un éventuel écart.</div></div>
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Confirmer la clôture »</strong>. Un ticket récapitulatif peut être imprimé.</div></div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Astuce :</strong> L'historique de toutes vos sessions de caisse est conservé. Vous pouvez consulter n'importe quelle session passée dans l'onglet « Historique ».</div>
+      </div>
+    </div>
+    <div class="bi-ar">
+      <p>في نهاية اليوم، أغلق صندوقك:</p>
+      <div class="steps">
+        <div class="step"><div class="step-content">انقر على <strong>"إغلاق الصندوق"</strong>.</div></div>
+        <div class="step"><div class="step-content">عدّ المال فعلياً في الدرج.</div></div>
+        <div class="step"><div class="step-content">أدخل <strong>المبلغ المعدود</strong>.</div></div>
+        <div class="step"><div class="step-content">البرنامج يقارن مع المبلغ النظري ويعرض <strong>الفارق</strong>:
+          <ul style="list-style:none; padding:0;">
+            <li>✅ فارق = 0 — ممتاز، الصندوق صحيح!</li>
+            <li>⚠️ فارق إيجابي — لديك مال أكثر من المتوقع</li>
+            <li>❌ فارق سلبي — ينقص مال</li>
+          </ul>
+        </div></div>
+        <div class="step"><div class="step-content">أضف <strong>ملاحظة إغلاق</strong> (اختياري) لشرح أي فارق.</div></div>
+        <div class="step"><div class="step-content">انقر على <strong>"تأكيد الإغلاق"</strong>. يمكن طباعة تذكرة ملخصة.</div></div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>نصيحة:</strong> سجل جميع جلسات الصندوق محفوظ. يمكنك مراجعة أي جلسة سابقة في تبويب "السجل".</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                 CHAPITRE 11 — RAPPORTS                         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch11">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 11</div>
+    <h2>Rapports & Statistiques</h2>
+    <div class="ch-ar">التقارير والإحصائيات</div>
+  </div>
+
+  <p class="section-intro">L'onglet Rapports vous donne une vision complète de la santé financière de votre commerce. Tous les rapports peuvent être filtrés par période (aujourd'hui, semaine, mois, année ou période personnalisée).</p>
+
+  <h3 id="ch11-1">Vue d'ensemble / نظرة عامة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>La vue d'ensemble affiche les indicateurs clés de performance :</p>
+      <ul>
+        <li>📊 <strong>Chiffre d'affaires total</strong></li>
+        <li>💹 <strong>Bénéfice brut</strong> (marge bénéficiaire)</li>
+        <li>📉 <strong>Total des dépenses</strong></li>
+        <li>💰 <strong>Résultat net</strong> (bénéfice après dépenses)</li>
+        <li>🧾 <strong>Nombre total de ventes</strong></li>
+        <li>🛒 <strong>Panier moyen</strong> (montant moyen par vente)</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>النظرة العامة تعرض المؤشرات الرئيسية:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>📊 <strong>رقم الأعمال الإجمالي</strong></li>
+        <li>💹 <strong>الربح الإجمالي</strong> (هامش الربح)</li>
+        <li>📉 <strong>إجمالي المصاريف</strong></li>
+        <li>💰 <strong>النتيجة الصافية</strong> (الربح بعد المصاريف)</li>
+        <li>🧾 <strong>العدد الإجمالي للمبيعات</strong></li>
+        <li>🛒 <strong>متوسط السلة</strong> (المبلغ المتوسط لكل بيع)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch11-2">Comparaison de périodes / مقارنة الفترات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Comparez les performances de deux périodes côte à côte :</p>
+      <ul>
+        <li>Jour contre jour (ex: lundi vs mardi)</li>
+        <li>Mois contre mois (ex: juin vs mai)</li>
+        <li>Périodes personnalisées</li>
+      </ul>
+      <p>Le logiciel calcule automatiquement les différences en volume et en pourcentage (+5%, -12%...) pour chaque indicateur.</p>
+    </div>
+    <div class="bi-ar">
+      <p>قارن أداء فترتين جنباً إلى جنب:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>يوم مقابل يوم (مثال: الإثنين مقابل الثلاثاء)</li>
+        <li>شهر مقابل شهر (مثال: جوان مقابل ماي)</li>
+        <li>فترات مخصصة</li>
+      </ul>
+      <p>البرنامج يحسب تلقائياً الفروقات بالحجم والنسبة المئوية (+5%، -12%...) لكل مؤشر.</p>
+    </div>
+  </div>
+
+  <h3 id="ch11-3">Graphiques et tendances / الرسوم البيانية والاتجاهات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Des graphiques visuels vous aident à comprendre les tendances :</p>
+      <ul>
+        <li>📈 <strong>Courbe d'évolution des ventes</strong> dans le temps</li>
+        <li>🥧 <strong>Répartition des dépenses</strong> par catégorie (camembert)</li>
+        <li>📊 <strong>Produits les plus vendus</strong> (classement en barres)</li>
+        <li>⏰ <strong>Heures de pointe</strong> — À quel moment de la journée vous vendez le plus</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>رسوم بيانية بصرية تساعدك على فهم الاتجاهات:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>📈 <strong>منحنى تطور المبيعات</strong> عبر الزمن</li>
+        <li>🥧 <strong>توزيع المصاريف</strong> حسب الفئة (دائري)</li>
+        <li>📊 <strong>المنتجات الأكثر مبيعاً</strong> (ترتيب بالأعمدة)</li>
+        <li>⏰ <strong>ساعات الذروة</strong> — في أي وقت من اليوم تبيع أكثر</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch11-4">Bilan financier / الميزانية المالية</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Le bilan financier décompose votre activité en :</p>
+      <ul>
+        <li><strong>Chiffre d'affaires</strong> — Total des ventes</li>
+        <li><strong>Coût des marchandises vendues</strong> — Ce que vous ont coûté les produits vendus</li>
+        <li><strong>Marge brute</strong> — Différence entre CA et coût des marchandises</li>
+        <li><strong>Charges d'exploitation</strong> — Toutes les dépenses (loyer, salaires, dépenses...)</li>
+        <li><strong>Résultat net</strong> — Votre vrai bénéfice final</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>الميزانية المالية تفصّل نشاطك إلى:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>رقم الأعمال</strong> — إجمالي المبيعات</li>
+        <li><strong>تكلفة البضائع المباعة</strong> — ما كلفتك المنتجات المباعة</li>
+        <li><strong>الهامش الإجمالي</strong> — الفرق بين رقم الأعمال وتكلفة البضائع</li>
+        <li><strong>مصاريف التشغيل</strong> — كل المصاريف (إيجار، رواتب، نفقات...)</li>
+        <li><strong>النتيجة الصافية</strong> — ربحك الحقيقي النهائي</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch11-5">Stock et inventaire / المخزون والجرد</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Ce rapport vous montre la valeur de votre stock :</p>
+      <ul>
+        <li><strong>Valeur au prix d'achat</strong> — Combien votre stock vous a coûté</li>
+        <li><strong>Valeur au prix de vente</strong> — Combien votre stock vaut s'il est vendu</li>
+        <li><strong>Bénéfice potentiel</strong> — La marge totale contenue dans votre stock</li>
+        <li>Les produits à stock faible, épuisé ou négatif</li>
+        <li>Les produits à rotation lente (invendus)</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>هذا التقرير يظهر قيمة مخزونك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>القيمة بسعر الشراء</strong> — كم كلفك مخزونك</li>
+        <li><strong>القيمة بسعر البيع</strong> — كم يساوي مخزونك إذا بيع</li>
+        <li><strong>الربح المحتمل</strong> — الهامش الإجمالي الموجود في مخزونك</li>
+        <li>المنتجات ذات المخزون المنخفض أو المستنفد أو السالب</li>
+        <li>المنتجات بطيئة الحركة (غير مباعة)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch11-6">Dettes et créances / الديون والمستحقات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <ul>
+        <li><strong>Créances clients</strong> — L'argent que vos clients vous doivent (les débiteurs)</li>
+        <li><strong>Dettes fournisseurs</strong> — L'argent que vous devez à vos fournisseurs (les créanciers)</li>
+        <li>Classement des plus gros débiteurs et créanciers</li>
+      </ul>
+      <p>Tous les rapports peuvent être <strong>exportés en PDF</strong> ou en <strong>fichier Excel</strong> en un seul clic.</p>
+    </div>
+    <div class="bi-ar">
+      <ul style="list-style:none; padding:0;">
+        <li><strong>مستحقات العملاء</strong> — المال الذي يدين به عملاؤك لك</li>
+        <li><strong>ديون الموردين</strong> — المال الذي تدين به للموردين</li>
+        <li>ترتيب أكبر المدينين والدائنين</li>
+      </ul>
+      <p>جميع التقارير يمكن <strong>تصديرها إلى PDF</strong> أو <strong>ملف إكسل</strong> بنقرة واحدة.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                 CHAPITRE 12 — EMPLOYÉS                         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch12">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 12</div>
+    <h2>Employés</h2>
+    <div class="ch-ar">الموظفون</div>
+  </div>
+
+  <h3 id="ch12-1">Fiche employé / بطاقة الموظف</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour chaque employé, vous pouvez enregistrer :</p>
+      <ul>
+        <li><strong>Nom complet</strong> et numéro de téléphone</li>
+        <li><strong>Type de salaire</strong> — Mensuel, hebdomadaire, journalier ou à l'heure</li>
+        <li><strong>Montant du salaire</strong></li>
+        <li><strong>Date d'embauche</strong></li>
+        <li><strong>Paiement automatique</strong> — Activer/désactiver le versement automatique</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>لكل موظف، يمكنك تسجيل:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>الاسم الكامل</strong> ورقم الهاتف</li>
+        <li><strong>نوع الراتب</strong> — شهري، أسبوعي، يومي أو بالساعة</li>
+        <li><strong>مبلغ الراتب</strong></li>
+        <li><strong>تاريخ التوظيف</strong></li>
+        <li><strong>الدفع التلقائي</strong> — تفعيل/إلغاء الدفع التلقائي</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch12-2">Présence et pointage / الحضور والمداومة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>L'onglet <strong>Présences</strong> vous permet de pointer quotidiennement chaque employé :</p>
+      <ul>
+        <li>✅ <strong>Présent</strong> — Journée complète travaillée</li>
+        <li>⚡ <strong>Demi-journée</strong> — Travail partiel</li>
+        <li>❌ <strong>Absent</strong> — Non présent</li>
+        <li>🏖️ <strong>Congé</strong> — Jour de repos autorisé</li>
+      </ul>
+      <p>Vous pouvez aussi enregistrer les <strong>heures supplémentaires</strong> individuellement ou pour tous les employés en même temps.</p>
+      <p>Un calendrier mensuel affiche visuellement la présence de chaque employé avec des codes couleur.</p>
+    </div>
+    <div class="bi-ar">
+      <p>تبويب <strong>الحضور</strong> يتيح لك تسجيل حضور كل موظف يومياً:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>✅ <strong>حاضر</strong> — يوم عمل كامل</li>
+        <li>⚡ <strong>نصف يوم</strong> — عمل جزئي</li>
+        <li>❌ <strong>غائب</strong> — غير حاضر</li>
+        <li>🏖️ <strong>إجازة</strong> — يوم راحة مرخص</li>
+      </ul>
+      <p>يمكنك أيضاً تسجيل <strong>الساعات الإضافية</strong> فردياً أو لجميع الموظفين معاً.</p>
+      <p>تقويم شهري يعرض بصرياً حضور كل موظف بألوان مميزة.</p>
+    </div>
+  </div>
+
+  <h3 id="ch12-3">Salaires et avances / الرواتب والسلف</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>La gestion des salaires comprend :</p>
+      <ul>
+        <li><strong>Avance sur salaire</strong> — Versement anticipé déduit du prochain salaire. Le montant est retiré de la caisse et enregistré comme dette de l'employé.</li>
+        <li><strong>Salaire complet</strong> — Le logiciel calcule automatiquement le salaire net :
+          <p style="background:#f1f5f9; padding:10px; border-radius:8px; font-size:12px; margin-top:8px;">
+            <strong>Salaire brut</strong> + <strong>Heures supplémentaires</strong> − <strong>Absences</strong> − <strong>Avances versées</strong> = <strong>Salaire net à payer</strong>
+          </p>
+        </li>
+        <li><strong>Impression</strong> — Fiche de paie et reçu d'avance imprimables (Ticket, A5 ou A4)</li>
+      </ul>
+      <p>Tous les paiements de salaire sont automatiquement enregistrés comme sortie de caisse.</p>
+    </div>
+    <div class="bi-ar">
+      <p>إدارة الرواتب تشمل:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>سلفة على الراتب</strong> — دفعة مسبقة تُخصم من الراتب القادم. يُسحب المبلغ من الصندوق ويُسجل كدين على الموظف.</li>
+        <li><strong>الراتب الكامل</strong> — البرنامج يحسب تلقائياً الراتب الصافي:
+          <p style="background:#fefce8; padding:10px; border-radius:8px; font-size:12px; margin-top:8px;">
+            <strong>الراتب الإجمالي</strong> + <strong>الساعات الإضافية</strong> − <strong>الغيابات</strong> − <strong>السلف المدفوعة</strong> = <strong>الراتب الصافي المستحق</strong>
+          </p>
+        </li>
+        <li><strong>الطباعة</strong> — كشف راتب ووصل سلفة قابلان للطباعة (تذكرة، A5 أو A4)</li>
+      </ul>
+      <p>جميع دفعات الرواتب تُسجل تلقائياً كمصاريف من الصندوق.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--              CHAPITRE 13 — LOYERS & CHARGES                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch13">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 13</div>
+    <h2>Loyers & Charges</h2>
+    <div class="ch-ar">الإيجار والأعباء</div>
+  </div>
+
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Le module Loyers (accessible depuis la Caisse) vous permet de gérer vos charges fixes récurrentes :</p>
+      <h4>Créer un contrat</h4>
+      <div class="steps">
+        <div class="step"><div class="step-content">Cliquez sur <strong>« Nouveau contrat »</strong>.</div></div>
+        <div class="step"><div class="step-content">Renseignez le nom du contrat (ex: « Loyer magasin », « Électricité »).</div></div>
+        <div class="step"><div class="step-content">Choisissez la fréquence de paiement : journalière, hebdomadaire ou mensuelle.</div></div>
+        <div class="step"><div class="step-content">Indiquez le montant et la date de début.</div></div>
+      </div>
+      <h4>Payer une échéance</h4>
+      <p>Le logiciel identifie automatiquement la prochaine échéance à payer. Cliquez sur « Régler » pour enregistrer le paiement. Le montant est déduit de la caisse.</p>
+      <p>Si un locataire paie plusieurs mois d'avance, le logiciel crée automatiquement un paiement séparé pour chaque période.</p>
+      <h4>Jours non facturés</h4>
+      <p>Vous pouvez marquer certains jours comme « non facturés » (fermeture, maintenance) pour qu'ils ne génèrent pas de dette.</p>
+    </div>
+    <div class="bi-ar">
+      <p>وحدة الإيجار (متاحة من الصندوق) تتيح لك إدارة أعبائك الثابتة المتكررة:</p>
+      <h4>إنشاء عقد</h4>
+      <div class="steps">
+        <div class="step"><div class="step-content">انقر على <strong>"عقد جديد"</strong>.</div></div>
+        <div class="step"><div class="step-content">أدخل اسم العقد (مثال: "إيجار المحل"، "كهرباء").</div></div>
+        <div class="step"><div class="step-content">اختر تكرار الدفع: يومي، أسبوعي أو شهري.</div></div>
+        <div class="step"><div class="step-content">حدد المبلغ وتاريخ البداية.</div></div>
+      </div>
+      <h4>دفع استحقاق</h4>
+      <p>البرنامج يحدد تلقائياً الاستحقاق التالي للدفع. انقر على "تسديد" لتسجيل الدفعة. يُخصم المبلغ من الصندوق.</p>
+      <p>إذا دفع المستأجر عدة أشهر مقدماً، البرنامج ينشئ تلقائياً دفعة منفصلة لكل فترة.</p>
+      <h4>أيام غير محسوبة</h4>
+      <p>يمكنك تحديد بعض الأيام كـ"غير محسوبة" (إغلاق، صيانة) حتى لا تولّد ديناً.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--              CHAPITRE 14 — PARAMÈTRES                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch14">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 14</div>
+    <h2>Paramètres</h2>
+    <div class="ch-ar">الإعدادات</div>
+  </div>
+
+  <p class="section-intro">Les Paramètres contiennent 8 sections pour configurer le logiciel selon vos besoins.</p>
+
+  <h3 id="ch14-1">Informations de l'établissement / معلومات المؤسسة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Renseignez les informations de votre commerce. Elles apparaîtront sur toutes les factures et documents imprimés :</p>
+      <ul>
+        <li>Nom de l'entreprise (en français et en arabe)</li>
+        <li>Adresse complète</li>
+        <li>Téléphone</li>
+        <li>Registre de commerce, Identification fiscale (NIF), Identification statistique (NIS)</li>
+        <li>Secteur d'activité</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>أدخل معلومات نشاطك التجاري. ستظهر على جميع الفواتير والوثائق المطبوعة:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>اسم المؤسسة (بالعربية والفرنسية)</li>
+        <li>العنوان الكامل</li>
+        <li>الهاتف</li>
+        <li>السجل التجاري، الرقم الجبائي (NIF)، الرقم الإحصائي (NIS)</li>
+        <li>قطاع النشاط</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch14-2">Imprimantes / الطابعات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Configurez vos imprimantes pour chaque usage :</p>
+      <ul>
+        <li><strong>Imprimante thermique</strong> — Pour les tickets de caisse (80mm ou 58mm)</li>
+        <li><strong>Imprimante documents</strong> — Pour les factures et bons (A4 ou A5)</li>
+        <li><strong>Imprimante étiquettes</strong> — Pour les codes-barres</li>
+      </ul>
+      <p>Utilisez le bouton « Tester l'impression » pour vérifier que l'imprimante fonctionne correctement.</p>
+    </div>
+    <div class="bi-ar">
+      <p>اضبط طابعاتك لكل استخدام:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>الطابعة الحرارية</strong> — لتذاكر الصندوق (80مم أو 58مم)</li>
+        <li><strong>طابعة الوثائق</strong> — للفواتير والسندات (A4 أو A5)</li>
+        <li><strong>طابعة الملصقات</strong> — للباركود</li>
+      </ul>
+      <p>استخدم زر "اختبار الطباعة" للتأكد من أن الطابعة تعمل بشكل صحيح.</p>
+    </div>
+  </div>
+
+  <h3 id="ch14-3">Langue et personnalisation / اللغة والتخصيص</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Choisissez la langue de l'interface :</p>
+      <ul>
+        <li>🇫🇷 <strong>Français</strong> — Affichage de gauche à droite</li>
+        <li>🇩🇿 <strong>Arabe</strong> — Affichage de droite à gauche</li>
+        <li>🇬🇧 <strong>Anglais</strong></li>
+      </ul>
+      <p>La langue peut être changée à tout moment sans redémarrer le logiciel.</p>
+    </div>
+    <div class="bi-ar">
+      <p>اختر لغة الواجهة:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>🇫🇷 <strong>الفرنسية</strong> — عرض من اليسار إلى اليمين</li>
+        <li>🇩🇿 <strong>العربية</strong> — عرض من اليمين إلى اليسار</li>
+        <li>🇬🇧 <strong>الإنجليزية</strong></li>
+      </ul>
+      <p>يمكن تغيير اللغة في أي وقت بدون إعادة تشغيل البرنامج.</p>
+    </div>
+  </div>
+
+  <h3 id="ch14-4">Valeurs par défaut / القيم الافتراضية</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <ul>
+        <li><strong>Symbole de la devise</strong> — DA, €, $ etc.</li>
+        <li><strong>Nombre de décimales</strong> — 0, 1, 2 ou 3</li>
+        <li><strong>Séparateur des milliers</strong> — Espace, virgule, point</li>
+        <li><strong>Tarif par défaut au comptoir</strong> — Détail, Semi-Gros ou Gros</li>
+        <li><strong>Mode de paiement par défaut</strong> — Espèces, chèque ou carte</li>
+        <li><strong>Ouverture automatique du tiroir-caisse</strong> — À chaque vente espèces</li>
+        <li><strong>Marges par défaut</strong> — Pourcentages de marge pour le calcul automatique des prix</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <ul style="list-style:none; padding:0;">
+        <li><strong>رمز العملة</strong> — دج، €، $ إلخ.</li>
+        <li><strong>عدد الأرقام العشرية</strong> — 0، 1، 2 أو 3</li>
+        <li><strong>فاصل الآلاف</strong> — مسافة، فاصلة، نقطة</li>
+        <li><strong>التعريفة الافتراضية في الكونتوار</strong> — تجزئة، نصف جملة أو جملة</li>
+        <li><strong>طريقة الدفع الافتراضية</strong> — نقداً، شيك أو بطاقة</li>
+        <li><strong>فتح درج الصندوق تلقائياً</strong> — مع كل بيع نقدي</li>
+        <li><strong>الهوامش الافتراضية</strong> — نسب الهامش للحساب التلقائي للأسعار</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch14-5">Sauvegarde et restauration / النسخ الاحتياطي والاستعادة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <div class="callout callout-danger">
+        <div class="callout-icon">🔴</div>
+        <div><strong>TRÈS IMPORTANT :</strong> La sauvegarde est la fonctionnalité la plus critique du logiciel. Sans sauvegarde, vous risquez de perdre toutes vos données en cas de panne de l'ordinateur.</div>
+      </div>
+      <ul>
+        <li><strong>Sauvegarde automatique</strong> — Le logiciel peut créer une sauvegarde automatiquement toutes les 15, 30 ou 60 minutes. Les 5 dernières sauvegardes sont conservées.</li>
+        <li><strong>Sauvegarde manuelle</strong> — Cliquez sur « Créer une sauvegarde » pour sauvegarder immédiatement. Le fichier peut être copié sur une clé USB.</li>
+        <li><strong>Restauration</strong> — En cas de problème, cliquez sur « Restaurer » et sélectionnez le fichier de sauvegarde. Toutes les données seront remises dans l'état de la sauvegarde.</li>
+        <li><strong>Remise à zéro</strong> — Efface toutes les données (protégé par mot de passe). À utiliser uniquement pour un nouveau départ.</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <div class="callout callout-danger">
+        <div class="callout-icon">🔴</div>
+        <div><strong>مهم جداً:</strong> النسخ الاحتياطي هو أهم ميزة في البرنامج. بدون نسخ احتياطي، تخاطر بفقدان جميع بياناتك في حالة عطل الحاسوب.</div>
+      </div>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>نسخ احتياطي تلقائي</strong> — البرنامج يمكنه إنشاء نسخة احتياطية تلقائياً كل 15 أو 30 أو 60 دقيقة. آخر 5 نسخ يتم الاحتفاظ بها.</li>
+        <li><strong>نسخ احتياطي يدوي</strong> — انقر على "إنشاء نسخة احتياطية" للحفظ فوراً. يمكن نسخ الملف على مفتاح USB.</li>
+        <li><strong>الاستعادة</strong> — في حالة مشكلة، انقر على "استعادة" واختر ملف النسخة الاحتياطية. جميع البيانات ستعود لحالة النسخة.</li>
+        <li><strong>إعادة التهيئة</strong> — مسح جميع البيانات (محمي بكلمة مرور). للاستخدام فقط عند بداية جديدة.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch14-6">Configuration réseau / إعداد الشبكة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Pour utiliser Stock Pro sur plusieurs ordinateurs dans le même magasin :</p>
+      <ul>
+        <li><strong>Ordinateur principal (Serveur)</strong> — Activez le mode « Serveur ». C'est lui qui stocke toutes les données.</li>
+        <li><strong>Autres ordinateurs (Postes de travail)</strong> — Activez le mode « Poste de travail » et entrez l'adresse du serveur affichée sur l'ordinateur principal.</li>
+      </ul>
+      <p>Tous les postes partagent les mêmes données en temps réel. Quand un caissier vend un produit, le stock se met à jour instantanément sur tous les autres postes.</p>
+    </div>
+    <div class="bi-ar">
+      <p>لاستخدام ستوك برو على عدة حواسيب في نفس المحل:</p>
+      <ul style="list-style:none; padding:0;">
+        <li><strong>الحاسوب الرئيسي (الخادم)</strong> — فعّل وضع "الخادم". هو الذي يخزن جميع البيانات.</li>
+        <li><strong>الحواسيب الأخرى (محطات العمل)</strong> — فعّل وضع "محطة عمل" وأدخل عنوان الخادم المعروض على الحاسوب الرئيسي.</li>
+      </ul>
+      <p>جميع المحطات تتشارك نفس البيانات في الوقت الفعلي. عندما يبيع أمين صندوق منتجاً، يتحدث المخزون فوراً على جميع المحطات الأخرى.</p>
+    </div>
+  </div>
+
+  <h3 id="ch14-7">Licence / الرخصة</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Consultez l'état de votre licence :</p>
+      <ul>
+        <li>Identifiant unique de la machine</li>
+        <li>État d'activation (Activé / Période d'essai)</li>
+        <li>Durée restante de la licence</li>
+        <li>Type de licence (1 mois, 6 mois, 1 an, 2 ans, à vie)</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>اطلع على حالة رخصتك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>المعرّف الفريد للجهاز</li>
+        <li>حالة التفعيل (مفعّل / فترة تجريبية)</li>
+        <li>المدة المتبقية للرخصة</li>
+        <li>نوع الرخصة (شهر، 6 أشهر، سنة، سنتين، مدى الحياة)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="ch14-8">Utilisateurs et rôles / المستخدمون والصلاحيات</h3>
+  <div class="bilingual">
+    <div class="bi-fr">
+      <p>Gérez les comptes utilisateurs et leurs permissions :</p>
+      <table>
+        <tr><th>Rôle</th><th>Description</th></tr>
+        <tr><td><strong>Administrateur</strong></td><td>Accès complet à toutes les fonctionnalités</td></tr>
+        <tr><td><strong>Gérant</strong></td><td>Accès à la plupart des fonctionnalités sauf les paramètres avancés</td></tr>
+        <tr><td><strong>Caissier</strong></td><td>Accès au comptoir et à la caisse uniquement</td></tr>
+        <tr><td><strong>Stockiste</strong></td><td>Accès aux produits et aux achats</td></tr>
+        <tr><td><strong>Visiteur</strong></td><td>Accès en lecture seule (consultation uniquement)</td></tr>
+      </table>
+      <p>Pour chaque utilisateur, vous pouvez :</p>
+      <ul>
+        <li>Définir un nom d'utilisateur et un mot de passe</li>
+        <li>Créer un code PIN rapide (4 à 6 chiffres) pour la connexion rapide</li>
+        <li>Choisir précisément quelles sections sont accessibles</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <p>أدر حسابات المستخدمين وصلاحياتهم:</p>
+      <table class="rtl-table">
+        <tr><th>الصلاحية</th><th>الوصف</th></tr>
+        <tr><td><strong>مدير</strong></td><td>وصول كامل لجميع الوظائف</td></tr>
+        <tr><td><strong>مسؤول</strong></td><td>وصول لمعظم الوظائف ما عدا الإعدادات المتقدمة</td></tr>
+        <tr><td><strong>أمين صندوق</strong></td><td>وصول للكونتوار والصندوق فقط</td></tr>
+        <tr><td><strong>مخزنجي</strong></td><td>وصول للمنتجات والمشتريات</td></tr>
+        <tr><td><strong>زائر</strong></td><td>وصول للقراءة فقط (استشارة)</td></tr>
+      </table>
+      <p>لكل مستخدم، يمكنك:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>تحديد اسم مستخدم وكلمة مرور</li>
+        <li>إنشاء رمز PIN سريع (4 إلى 6 أرقام) للاتصال السريع</li>
+        <li>اختيار بدقة الأقسام المتاحة</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                   CHAPITRE 15 — FAQ                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch15">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 15</div>
+    <h2>Questions fréquentes</h2>
+    <div class="ch-ar">أسئلة شائعة</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ J'ai vendu un produit par erreur. Comment corriger ? / بعت منتجاً بالخطأ. كيف أصحح؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Allez dans l'onglet <strong>Factures</strong>, retrouvez le ticket de vente, puis cliquez sur « Annuler le document ». Le stock sera automatiquement restauré et la caisse mise à jour.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : اذهب إلى تبويب الفواتير، ابحث عن تذكرة البيع، ثم انقر على "إلغاء الوثيقة". سيُستعاد المخزون تلقائياً ويُحدّث الصندوق.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ Je ne retrouve plus un produit dans la liste. / لا أجد منتجاً في القائمة.</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Vérifiez les filtres actifs. Le produit peut être archivé. Désactivez le filtre « Actifs uniquement » pour voir tous les produits. Vous pouvez aussi chercher par nom, code-barres ou référence.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : تحقق من الفلاتر النشطة. قد يكون المنتج مؤرشفاً. أزل فلتر "النشطة فقط" لرؤية جميع المنتجات. يمكنك أيضاً البحث بالاسم أو الباركود أو المرجع.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ Comment imprimer une facture ? / كيف أطبع فاتورة؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Allez dans <strong>Factures</strong>, sélectionnez le document, cliquez sur « Aperçu ». Choisissez le format (Ticket, A4, A5) puis cliquez sur « Imprimer ». L'impression est directe, sans fenêtre Windows.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : اذهب إلى الفواتير، اختر الوثيقة، انقر على "معاينة". اختر الشكل (تذكرة، A4، A5) ثم انقر على "طباعة". الطباعة مباشرة بدون نافذة ويندوز.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ Le stock affiche un nombre négatif. Est-ce normal ? / المخزون يعرض رقماً سالباً. هل هذا طبيعي؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Oui, c'est normal. Le logiciel autorise toujours la vente, même si le stock est à zéro. Le stock négatif signifie que vous avez vendu plus que ce qui était enregistré. Vous devrez régulariser en enregistrant un achat ou un inventaire.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : نعم، هذا طبيعي. البرنامج يسمح دائماً بالبيع حتى لو كان المخزون صفراً. المخزون السالب يعني أنك بعت أكثر مما هو مسجل. يجب تسوية الوضع بتسجيل عملية شراء أو جرد.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ Comment sauvegarder mes données ? / كيف أحفظ بياناتي؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Allez dans <strong>Paramètres → Sauvegarde</strong>. Vous pouvez déclencher une sauvegarde manuelle ou activer la sauvegarde automatique (toutes les 15, 30 ou 60 minutes). Les sauvegardes sont stockées localement et vous pouvez les exporter sur une clé USB.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : اذهب إلى الإعدادات ← النسخ الاحتياطي. يمكنك إجراء نسخ احتياطي يدوي أو تفعيل النسخ الاحتياطي التلقائي (كل 15، 30 أو 60 دقيقة). النسخ تُخزن محلياً ويمكنك تصديرها على مفتاح USB.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ J'ai un écart dans la caisse. Que faire ? / لدي فارق في الصندوق. ماذا أفعل؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Lors de la clôture, le logiciel compare le montant théorique (calculé) avec le montant réel que vous comptez. L'écart est affiché clairement. Ajoutez une note d'explication, puis validez la clôture. L'écart est archivé dans l'historique.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : عند الإغلاق، يقارن البرنامج المبلغ النظري (المحسوب) مع المبلغ الحقيقي الذي تعده. يُعرض الفارق بوضوح. أضف ملاحظة توضيحية ثم أكّد الإغلاق. الفارق يُؤرشف في السجل.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ Un client veut payer une partie de sa dette. Comment faire ? / عميل يريد دفع جزء من دينه. كيف أفعل؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Allez dans l'onglet <strong>Clients</strong>, sélectionnez le client, puis cliquez sur « Régler crédit » ou « Verser un acompte ». Saisissez le montant payé. Le solde du client est mis à jour automatiquement.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : اذهب إلى تبويب العملاء، اختر العميل، ثم انقر على "تسوية الدين" أو "دفع تسبيق". أدخل المبلغ المدفوع. يتم تحديث رصيد العميل تلقائياً.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ Comment connecter un deuxième ordinateur ? / كيف أربط حاسوباً ثانياً؟</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Sur l'ordinateur principal, allez dans <strong>Paramètres → Réseau</strong> et activez le mode « Serveur ». Notez l'adresse affichée. Sur le deuxième ordinateur, choisissez le mode « Poste de travail » et entrez l'adresse du serveur. Les deux postes seront synchronisés en temps réel.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : على الحاسوب الرئيسي، اذهب إلى الإعدادات ← الشبكة وفعّل وضع "الخادم". دوّن العنوان المعروض. على الحاسوب الثاني، اختر وضع "محطة عمل" وأدخل عنوان الخادم. سيتم مزامنة المحطتين فورياً.</strong>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">❓ L'impression ne fonctionne pas. / الطباعة لا تعمل.</div>
+    <div class="faq-a">
+      <strong>FR :</strong> Vérifiez dans <strong>Paramètres → Imprimantes</strong> que la bonne imprimante est sélectionnée. Cliquez sur « Tester l'impression » pour envoyer une page test. Assurez-vous que l'imprimante est allumée et connectée par câble USB.<br>
+      <strong style="font-family:'Noto Sans Arabic'; direction:rtl; display:block; text-align:right; margin-top:8px;">AR : تحقق في الإعدادات ← الطابعات من أن الطابعة الصحيحة محددة. انقر على "اختبار الطباعة" لإرسال صفحة تجريبية. تأكد أن الطابعة مشغّلة ومتصلة بكابل USB.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--              CHAPITRE 16 — CONSEILS                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch16">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 16</div>
+    <h2>Conseils et bonnes pratiques</h2>
+    <div class="ch-ar">نصائح وممارسات جيدة</div>
+  </div>
+
+  <div class="bilingual">
+    <div class="bi-fr">
+      <h4>💾 Sauvegarde</h4>
+      <ul>
+        <li>Activez la sauvegarde automatique (toutes les 30 minutes minimum)</li>
+        <li>Faites une copie sur clé USB ou disque externe chaque semaine</li>
+        <li>Ne gardez jamais vos sauvegardes uniquement sur le même ordinateur</li>
+      </ul>
+
+      <h4>🔐 Sécurité</h4>
+      <ul>
+        <li>Changez les codes PIN régulièrement</li>
+        <li>Ne donnez pas le code administrateur aux caissiers</li>
+        <li>Limitez les accès de chaque utilisateur à ce dont il a besoin</li>
+      </ul>
+
+      <h4>📦 Organisation du stock</h4>
+      <ul>
+        <li>Configurez les seuils d'alerte de stock minimum pour chaque produit</li>
+        <li>Consultez régulièrement les notifications de stock faible</li>
+        <li>Mettez à jour les prix d'achat à chaque arrivage</li>
+        <li>Renseignez les dates de péremption pour les produits concernés</li>
+      </ul>
+
+      <h4>💰 Caisse</h4>
+      <ul>
+        <li>Ouvrez la caisse en début de journée et clôturez-la en fin de journée</li>
+        <li>Enregistrez toutes les sorties de caisse (dépenses, avances...)</li>
+        <li>Comptez l'argent physique avant de clôturer pour repérer les écarts</li>
+      </ul>
+
+      <h4>👥 Clients</h4>
+      <ul>
+        <li>Enregistrez vos clients réguliers avec leurs coordonnées complètes</li>
+        <li>Fixez des limites de crédit pour éviter les dettes excessives</li>
+        <li>Imprimez régulièrement les relevés de compte pour vos clients débiteurs</li>
+      </ul>
+    </div>
+    <div class="bi-ar">
+      <h4>💾 النسخ الاحتياطي</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li>فعّل النسخ الاحتياطي التلقائي (كل 30 دقيقة على الأقل)</li>
+        <li>قم بنسخ على مفتاح USB أو قرص خارجي كل أسبوع</li>
+        <li>لا تحتفظ أبداً بالنسخ الاحتياطية فقط على نفس الحاسوب</li>
+      </ul>
+
+      <h4>🔐 الأمان</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li>غيّر رموز PIN بانتظام</li>
+        <li>لا تعطِ رمز المدير لأمناء الصندوق</li>
+        <li>حدد صلاحيات كل مستخدم حسب ما يحتاجه فقط</li>
+      </ul>
+
+      <h4>📦 تنظيم المخزون</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li>حدد حدود التنبيه للحد الأدنى من المخزون لكل منتج</li>
+        <li>راجع إشعارات المخزون المنخفض بانتظام</li>
+        <li>حدّث أسعار الشراء مع كل وصول بضاعة</li>
+        <li>سجّل تواريخ الانتهاء للمنتجات المعنية</li>
+      </ul>
+
+      <h4>💰 الصندوق</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li>افتح الصندوق في بداية اليوم وأغلقه في نهايته</li>
+        <li>سجّل جميع المصاريف من الصندوق (مصاريف، سلف...)</li>
+        <li>عد المال الفعلي قبل الإغلاق لاكتشاف الفوارق</li>
+      </ul>
+
+      <h4>👥 العملاء</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li>سجّل عملاءك الدائمين مع بياناتهم الكاملة</li>
+        <li>حدد حدود ائتمان لتجنب الديون المفرطة</li>
+        <li>اطبع كشوف الحسابات بانتظام لعملائك المدينين</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--              CHAPITRE 17 — GLOSSAIRE                           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="chapter page-break" id="ch17">
+  <div class="chapter-header">
+    <div class="ch-number">Chapitre 17</div>
+    <h2>Glossaire</h2>
+    <div class="ch-ar">المصطلحات</div>
+  </div>
+
+  <table>
+    <tr><th>Terme (FR)</th><th>Explication simple</th><th style="direction:rtl; text-align:right; font-family:'Noto Sans Arabic'">المصطلح (AR)</th></tr>
+    <tr><td><strong>Chiffre d'affaires</strong></td><td>Le total de l'argent gagné grâce aux ventes</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>رقم الأعمال</strong> — إجمالي المال المكتسب من المبيعات</td></tr>
+    <tr><td><strong>Marge bénéficiaire</strong></td><td>La différence entre le prix de vente et le prix d'achat</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>هامش الربح</strong> — الفرق بين سعر البيع وسعر الشراء</td></tr>
+    <tr><td><strong>Crédit / Créance</strong></td><td>L'argent qu'un client vous doit</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>الدين / المديونية</strong> — المال الذي يدين به العميل لك</td></tr>
+    <tr><td><strong>Bon d'achat</strong></td><td>Le document qui enregistre l'arrivée de marchandise d'un fournisseur</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>سند الشراء</strong> — الوثيقة التي تسجل وصول البضاعة من مورد</td></tr>
+    <tr><td><strong>Bon de livraison</strong></td><td>Le papier qui accompagne la marchandise livrée au client</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>سند التسليم</strong> — الورقة التي ترافق البضاعة المسلّمة للعميل</td></tr>
+    <tr><td><strong>Devis / Proforma</strong></td><td>Une proposition de prix, sans engagement</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>عرض الأسعار / بروفورما</strong> — اقتراح سعر بدون التزام</td></tr>
+    <tr><td><strong>TVA</strong></td><td>Taxe ajoutée au prix de vente, uniquement sur les factures entreprise</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>الضريبة على القيمة المضافة</strong> — ضريبة تُضاف لسعر البيع، فقط على فواتير الشركات</td></tr>
+    <tr><td><strong>CUMP</strong></td><td>Le prix d'achat moyen d'un produit, calculé automatiquement</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>السعر المرجح</strong> — معدل سعر الشراء المحسوب تلقائياً</td></tr>
+    <tr><td><strong>Clôture de caisse</strong></td><td>La fermeture de la session de caisse en fin de journée</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>إغلاق الصندوق</strong> — إغلاق جلسة الصندوق في نهاية اليوم</td></tr>
+    <tr><td><strong>Fond de caisse</strong></td><td>L'argent de départ placé dans la caisse en début de journée</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>رأس المال الافتتاحي</strong> — المال المبدئي الموضوع في الصندوق</td></tr>
+    <tr><td><strong>Écart de caisse</strong></td><td>La différence entre l'argent calculé et l'argent compté physiquement</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>فارق الصندوق</strong> — الفرق بين المال المحسوب والمال المعدود</td></tr>
+    <tr><td><strong>Archiver</strong></td><td>Masquer un produit sans le supprimer, pour garder son historique</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>أرشفة</strong> — إخفاء منتج بدون حذفه، للاحتفاظ بتاريخه</td></tr>
+    <tr><td><strong>Stock négatif</strong></td><td>Quand la quantité en stock est en dessous de zéro (vous avez vendu plus que ce que vous aviez)</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>مخزون سالب</strong> — عندما تكون الكمية أقل من صفر (بعت أكثر مما لديك)</td></tr>
+    <tr><td><strong>Code-barres</strong></td><td>La série de barres noires sur l'emballage du produit, identifiant unique</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>الباركود</strong> — سلسلة الخطوط السوداء على غلاف المنتج، معرّف فريد</td></tr>
+    <tr><td><strong>Acompte</strong></td><td>Un paiement partiel sur une dette</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>تسبيق / دفعة جزئية</strong> — دفع جزء من الدين</td></tr>
+    <tr><td><strong>Relevé de compte</strong></td><td>Un document résumant les achats et paiements d'un client ou fournisseur</td><td style="direction:rtl; font-family:'Noto Sans Arabic'"><strong>كشف الحساب</strong> — وثيقة تلخص مشتريات ومدفوعات عميل أو مورد</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                         FOOTER                                 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="manual-footer">
+  <p><strong>Stock Pro</strong> — Manuel Utilisateur / دليل المستخدم — Version 1.0</p>
+  <p>© 2026 Stock Pro. Tous droits réservés. / جميع الحقوق محفوظة</p>
+</div>
+
+</body>
+</html>
