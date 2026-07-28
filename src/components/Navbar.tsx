@@ -122,8 +122,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDoc }) => {
             {/* Download CTA Button */}
             <a
               href={DOWNLOAD_URL}
-              download="STOCK PRO 1.0.zip"
-              className="relative inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 border border-indigo-400/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 overflow-hidden group"
+              onClick={(e) => {
+                if (!DOWNLOAD_URL.startsWith('http')) {
+                  e.preventDefault();
+                  window.open('https://wa.me/213668537167?text=' + encodeURIComponent("Bonjour, je souhaite recevoir le lien de téléchargement direct du logiciel Stock Pro v4.2 (508 Mo)."), '_blank');
+                }
+              }}
+              className="relative inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 border border-indigo-400/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 overflow-hidden group cursor-pointer"
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
               <Download className="w-3.5 h-3.5 ltr:mr-2 rtl:ml-2 text-indigo-100 group-hover:scale-110 transition-transform" />

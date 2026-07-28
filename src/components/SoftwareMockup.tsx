@@ -21,43 +21,43 @@ export const SoftwareMockup: React.FC = () => {
 
   const screenshots = {
     accueil: {
-      src: '/cpt/STOCK-PRO-ACCEUIL.png',
+      src: '/cpt/acceuil.jpg',
       alt: 'Stock Pro - Tableau de Bord Accueil',
       label: t.mockup.tabs.accueil,
       icon: LayoutDashboard
     },
     caisse: {
-      src: '/cpt/STOCK-PRO-CAISSE.png',
+      src: '/cpt/caisse.jpg',
       alt: 'Stock Pro - Interface Caisse et Point de Vente',
       label: t.mockup.tabs.caisse,
       icon: ShoppingCart
     },
     produit: {
-      src: '/cpt/STOCK-PRO-FICHEPRODUIT.png',
+      src: '/cpt/ficheproduit.jpg',
       alt: 'Stock Pro - Gestion Fiche Produit et Stock',
       label: t.mockup.tabs.produit,
       icon: Package
     },
     facture: {
-      src: '/cpt/STOCK-PRO-APERCU-FACT.png',
+      src: '/cpt/facture.jpg',
       alt: 'Stock Pro - Aperçu Factures et Tickets',
       label: t.mockup.tabs.facture,
       icon: Receipt
     },
     bilan: {
-      src: '/cpt/STOCK-PRO-BILAN.png',
+      src: '/cpt/bilan.jpg',
       alt: 'Stock Pro - Bilan et Rapports Financiers',
       label: t.mockup.tabs.bilan,
       icon: PieChart
     },
     clients: {
-      src: '/cpt/STOCK-PRO-CLIENT.png',
+      src: '/cpt/client.jpg',
       alt: 'Stock Pro - Gestion Clients et Dettes',
       label: t.mockup.tabs.clients,
       icon: Users
     },
     employes: {
-      src: '/cpt/STOCK-PRO-EMPLOYEE.png',
+      src: '/cpt/employee.jpg',
       alt: 'Stock Pro - Gestion et Pointage Employés',
       label: t.mockup.tabs.employes,
       icon: UserCheck

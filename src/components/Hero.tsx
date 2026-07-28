@@ -75,8 +75,13 @@ export const Hero: React.FC = () => {
               {/* Primary Download CTA */}
               <a
                 href={DOWNLOAD_URL}
-                download="STOCK PRO 1.0.zip"
-                className="relative group inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-xl shadow-indigo-500/25 hover:shadow-indigo-500/40 border border-indigo-400/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 overflow-hidden text-center"
+                onClick={(e) => {
+                  if (!DOWNLOAD_URL.startsWith('http')) {
+                    e.preventDefault();
+                    window.open('https://wa.me/213668537167?text=' + encodeURIComponent("Bonjour, je souhaite recevoir le lien de téléchargement direct du logiciel Stock Pro v4.2 (508 Mo)."), '_blank');
+                  }
+                }}
+                className="relative group inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-xl shadow-indigo-500/25 hover:shadow-indigo-500/40 border border-indigo-400/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 overflow-hidden text-center cursor-pointer"
               >
                 {/* Shine animation */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
