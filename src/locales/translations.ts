@@ -1,8 +1,14 @@
 export type Language = 'fr' | 'ar';
 
-// Lien central de téléchargement du logiciel Stock Pro
-// (Remplacez par votre lien Google Drive si le fichier dépasse 100 Mo sur GitHub/Vercel)
 export const DOWNLOAD_URL = "/STOCK%20PRO%201.0.zip";
+
+export interface TabFeatureHighlight {
+  title: string;
+  subtitle: string;
+  iconName: string;
+  points: Array<{ title: string; desc: string }>;
+  badge: string;
+}
 
 export interface Translations {
   nav: {
@@ -39,6 +45,7 @@ export interface Translations {
       clients: string;
       employes: string;
     };
+    tabFeatures: Record<string, TabFeatureHighlight>;
     floatingReceiptCard: {
       ticketNumber: string;
       totalAmount: string;
@@ -129,6 +136,92 @@ export const translations: Record<Language, Translations> = {
         bilan: "Bilan & Rapports",
         clients: "Clients & Fournisseurs",
         employes: "Pointage Employés",
+      },
+      tabFeatures: {
+        accueil: {
+          title: "Tableau de Bord & Vue Générale",
+          subtitle: "Supervisez l'ensemble de votre commerce en temps réel sur un seul écran.",
+          iconName: "LayoutDashboard",
+          badge: "Aperçu Global 360°",
+          points: [
+            { title: "Ventes du jour en DA", desc: "Suivez le chiffre d'affaires et la rentabilité en direct." },
+            { title: "Indicateurs Clés (KPI)", desc: "Nombre de transactions, bénéfice net et niveau de stock." },
+            { title: "Alertes de Réapprovisionnement", desc: "Soyez notifié dès qu'un article passe sous le seuil minimum." },
+            { title: "Accès Rapide aux Actions", desc: "Raccourcis clavier pour créer une facture ou encaisser." }
+          ]
+        },
+        caisse: {
+          title: "Point de Vente (POS) & Caisse Express",
+          subtitle: "Encaissez vos clients à la vitesse de l'éclair sans aucun ralentissement.",
+          iconName: "ShoppingCart",
+          badge: "Encaissement Ultra Rapide",
+          points: [
+            { title: "Lecture Code-Barres Instantanée", desc: "Prise en charge de toutes les douchettes et scanners." },
+            { title: "Impression Ticket 80mm", desc: "Édition de tickets de caisse en moins de 2 secondes." },
+            { title: "Modes de Paiement Multiples", desc: "Espèces, chèque, carte bancaire ou crédit sur compte client." },
+            { title: "Calcul du Rendu Monnaie", desc: "Évite toute erreur de caisse lors des transactions rapides." }
+          ]
+        },
+        produit: {
+          title: "Gestion Complète du Stock & Articles",
+          subtitle: "Organisez vos produits avec précision, variantes et prix personnalisés.",
+          iconName: "Package",
+          badge: "Stockage Intelligente",
+          points: [
+            { title: "Tarification Multi-Niveaux", desc: "Gérez les prix de détail, semi-gros et gros par produit." },
+            { title: "Importation Excel & IA", desc: "Importez des milliers d'articles en quelques clics." },
+            { title: "Gestion des Variantes", desc: "Tailles, couleurs, poids, lots et dates de péremption." },
+            { title: "Inventaire au Barcode", desc: "Faites votre inventaire sans fermer le magasin." }
+          ]
+        },
+        facture: {
+          title: "Facturation & Tickets Personnalisés",
+          subtitle: "Générez des factures et bons de livraison conformes et professionnels.",
+          iconName: "Receipt",
+          badge: "Impression Pro & PDF",
+          points: [
+            { title: "Modèles d'Imprimés personnalisables", desc: "Ajoutez votre logo, coordonnées et conditions de vente." },
+            { title: "Impression A4, A5 et Ticket", desc: "Adaptable sur tout type d'imprimante thermique ou bureau." },
+            { title: "Exportation PDF & Excel", desc: "Envoyez vos factures directement par e-mail ou WhatsApp." },
+            { title: "Gestion des Remises & TVA", desc: "Calcul automatique des remises et taxes de vente." }
+          ]
+        },
+        bilan: {
+          title: "Bilan Financier & Analyse des Bénéfices",
+          subtitle: "Visualisez vos marges nettes et comprenez la rentabilité de votre commerce.",
+          iconName: "PieChart",
+          badge: "Calcul de Marge Nette",
+          points: [
+            { title: "Calcul Automatique du Marge", desc: "Sachez exactement combien vous gagnez sur chaque produit." },
+            { title: "Rapports Journaliers & Mensuels", desc: "Histogrammes clairs de l'évolution de votre activité." },
+            { title: "Analyse des Top Produits", desc: "Identifiez vos meilleures ventes et articles les plus rentables." },
+            { title: "Clôture de Caisse Z", desc: "Générez votre rapport de caisse de fin de journée." }
+          ]
+        },
+        clients: {
+          title: "Fichier Clients & Suivi des Dettes (Krnish)",
+          subtitle: "Fidélisez vos clients et contrôlez l'historique des crédits et fournisseurs.",
+          iconName: "Users",
+          badge: "Gestion des Créances",
+          points: [
+            { title: "Suivi des Crédits Clients (Krnish)", desc: "Consultez le solde débiteur et l'historique de chaque client." },
+            { title: "Règlements & Versements", desc: "Enregistrez les acomptes et versements partiels." },
+            { title: "Historique d'Achats Détaillé", desc: "Retrouvez toutes les anciennes factures d'un client en 1 clic." },
+            { title: "Gestion des Fournisseurs", desc: "Suivez vos commandes d'achat et vos dettes fournisseurs." }
+          ]
+        },
+        employes: {
+          title: "Gestion des Employés & Pointage",
+          subtitle: "Contrôlez les accès de vos caissiers et le pointage de votre personnel.",
+          iconName: "UserCheck",
+          badge: "Sécurité & Droits d'Accès",
+          points: [
+            { title: "Droits d'Accès par Rôle", desc: "Limitez les actions autorisées (ex: interdiction d'annuler une vente)." },
+            { title: "Pointage & Fiche de Paie", desc: "Enregistrez la présence, les retards et calculez les salaires." },
+            { title: "Traçabilité des Ventes", desc: "Identifiez quel caissier a effectué chaque vente." },
+            { title: "Sécurité par Mot de Passe", desc: "Chaque employé possède son propre compte sécurisé." }
+          ]
+        }
       },
       floatingReceiptCard: {
         ticketNumber: "🧾 Ticket N° 4892",
@@ -255,6 +348,92 @@ export const translations: Record<Language, Translations> = {
         bilan: "الحصيلة والتقارير",
         clients: "الزبائن والموردين",
         employes: "تسجيل العمال",
+      },
+      tabFeatures: {
+        accueil: {
+          title: "لوحة التحكم والنظرة العامة",
+          subtitle: "راقب جميع أنشطة متجرك في الوقت الفعلي في شاشة واحدة.",
+          iconName: "LayoutDashboard",
+          badge: "رؤية شاملة 360°",
+          points: [
+            { title: "مبيعات اليوم بالدينار", desc: "متابعة رقم الأعمال والأرباح مباشرة." },
+            { title: "المؤشرات الرئيسية", desc: "عدد المعاملات، الأرباح الصافية وحالة المخزون." },
+            { title: "تنبيهات إعادة التزويد", desc: "إشعار فوري عند انخفاض كمية أي منتج." },
+            { title: "وصول سريع للعمليات", desc: "اختصارات لوحة المفاتيح وإنشاء الفواتير." }
+          ]
+        },
+        caisse: {
+          title: "نقطة البيع والصندوق السريع",
+          subtitle: "سجل مبيعات زبائنك بسرعة فائقة دون أي تأخير.",
+          iconName: "ShoppingCart",
+          badge: "تحصيل فائق السرعة",
+          points: [
+            { title: "قراءة الباركود فورية", desc: "دعم كامل لجميع أنواع القارئات والماسحات." },
+            { title: "طباعة وصل 80مم", desc: "إصدار وصل الصندوق في أقل من ثانيتين." },
+            { title: "طرق دفع متعددة", desc: "نقداً، شيك، بطاقة بنكية أو حساب الزبون." },
+            { title: "حساب الصرف التلقائي", desc: "تجنب خطأ الصرف أثناء عمليات البيع السريعة." }
+          ]
+        },
+        produit: {
+          title: "إدارة المخزون والمنتجات",
+          subtitle: "نظم منتجاتك بدقة مع الخيارات والأسعار المخصصة.",
+          iconName: "Package",
+          badge: "مخزون ذكي",
+          points: [
+            { title: "أسعار متعددة المستويات", desc: "إدارة أسعار التجزئة، نصف الجملة والجملة." },
+            { title: "استيراد Excel وذكاء اصطناعي", desc: "إدخال آلاف المنتجات في ثوان معدودة." },
+            { title: "إدارة الخيارات والأنواع", desc: "الأحجام، الألوان، الأوزان وتاريخ الانتهاء." },
+            { title: "جرد بالباركود", desc: "إجراء الجرد دون الحاجة لإغلاق المحل." }
+          ]
+        },
+        facture: {
+          title: "الفواتير والإيصالات المخصصة",
+          subtitle: "أنشئ فواتير وصلات تسليم مطابقة واحترافية.",
+          iconName: "Receipt",
+          badge: "طباعة احترافية و PDF",
+          points: [
+            { title: "نماذج قابلة للتخصيص", desc: "إضافة شعارك، معلوماتك وشروط البيع." },
+            { title: "طباعة A4, A5 ووصل", desc: "متوافق مع كل أنواع الطابعات الحرارية والفرعية." },
+            { title: "تصدير PDF و Excel", desc: "إرسال الفواتير مباشرة عبر الواتساب أو البريد." },
+            { title: "حساب التخفيضات والرسوم", desc: "حساب تلقائي لنسب التخفيض والضرائب." }
+          ]
+        },
+        bilan: {
+          title: "الحصيلة المالية وحساب الأرباح",
+          subtitle: "شاهد هامش ربحك الصافي وافهم مربحية تجارتك.",
+          iconName: "PieChart",
+          badge: "حساب الهامش الصافي",
+          points: [
+            { title: "حساب تلقائي للهامش", desc: "اعرف بالضبط كم تربح في كل منتج." },
+            { title: "تقارير يومية وشهرية", desc: "مخططات بيانية واضحة لتطور النشاط." },
+            { title: "تحليل المنتجات الأكثر مبيعاً", desc: "معرفة المنتجات الأكثر ربحية ومبيعا." },
+            { title: "إغلاق الصندوق Z", desc: "توليد تقرير النهائي للصندوق في نهاية اليوم." }
+          ]
+        },
+        clients: {
+          title: "سجل الزبائن ومتابعة الديون (الكرني)",
+          subtitle: "تابع ديون الزبائن وسجل المقبوضات والموردين.",
+          iconName: "Users",
+          badge: "إدارة المستحقات والديون",
+          points: [
+            { title: "متابعة ديون الزبائن (الكرني)", desc: "الاطلاع على الرصيد المستحق وسجل كل زبون." },
+            { title: "تسجيل الدفعات والتسديدات", desc: "تسجيل الدفعات الجزئية والمستحقات." },
+            { title: "سجل المشتريات السابق", desc: "الوصول للفواتير القديمة بنقرة واحدة." },
+            { title: "إدارة الموردين", desc: "متابعة الطلبيات والديون لدى الموردين." }
+          ]
+        },
+        employes: {
+          title: "إدارة العمال وتسجيل الحضور",
+          subtitle: "تحكم في صلاحيات مستخدمي الصندوق وتسجيل الحضور.",
+          iconName: "UserCheck",
+          badge: "الأمان وصلاحيات الوصول",
+          points: [
+            { title: "صلاحيات حسب الدور", desc: "تحديد العمليات المسموحة (مثل منع إلغاء البيع)." },
+            { title: "تسجيل الحضور والأجور", desc: "متابعة الحضور، التأخرات وحساب الراتب." },
+            { title: "تتبع المبيعات حسب العامل", desc: "معرفة العامل الذي أجرى كل عملية بيع." },
+            { title: "أمان بكلمات السر", desc: "كل عامل يملك حسابه الخاص المحمي." }
+          ]
+        }
       },
       floatingReceiptCard: {
         ticketNumber: "🧾 وصل رقم 4892",
