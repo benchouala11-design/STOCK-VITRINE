@@ -78,7 +78,7 @@ export const SoftwareMockup: React.FC = () => {
   const activeFeatures = currentTab.features;
 
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-8">
+    <div className="w-full max-w-7xl mx-auto space-y-3">
       
       {/* ================================================================ */}
       {/* 1. TOP INTERACTIVE MODULE TABS SELECTOR                          */}
@@ -122,6 +122,26 @@ export const SoftwareMockup: React.FC = () => {
             </motion.button>
           );
         })}
+        </div>
+      </div>
+
+      {/* Projecteur mural : il relie visuellement le module choisi à son aperçu. */}
+      <div className="relative h-8 overflow-hidden" aria-hidden="true">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, scaleX: 0.55 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            exit={{ opacity: 0, scaleX: 1.15 }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
+            className="absolute inset-x-[12%] top-2 h-12 origin-top rounded-[100%] bg-gradient-to-b from-indigo-400/30 via-amber-300/15 to-transparent blur-xl"
+          />
+        </AnimatePresence>
+        <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
+          <div className="h-3 w-16 rounded-full border border-slate-600 bg-slate-900 shadow-[0_4px_14px_rgba(15,23,42,0.45)]">
+            <div className="mx-auto mt-0.5 h-1.5 w-7 rounded-full bg-gradient-to-r from-indigo-400 via-amber-300 to-emerald-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
+          </div>
+          <div className="mx-auto h-2 w-7 rounded-b-lg border-x border-b border-slate-700 bg-slate-800" />
         </div>
       </div>
 
