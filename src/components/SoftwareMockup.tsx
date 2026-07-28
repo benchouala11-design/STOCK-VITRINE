@@ -134,11 +134,19 @@ export const SoftwareMockup: React.FC = () => {
             animate={{ opacity: [0.45, 0.75, 0.55], scaleX: 1 }}
             exit={{ opacity: 0, scaleX: 1.15 }}
             transition={{ duration: 0.45, ease: 'easeOut' }}
-            className="absolute left-1/2 top-3 h-20 w-56 -translate-x-1/2 origin-top bg-gradient-to-b from-amber-300/45 via-indigo-400/20 to-transparent blur-md"
+            className="absolute left-[48%] top-3 h-20 w-56 -translate-x-1/2 origin-top bg-gradient-to-b from-amber-200/55 via-indigo-400/22 to-transparent blur-md"
             style={{ clipPath: 'polygon(45% 0, 55% 0, 100% 100%, 0 100%)' }}
           />
         </AnimatePresence>
-        <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
+        <motion.div
+          key={`${activeTab}-core`}
+          initial={{ opacity: 0, scaleY: 0.65 }}
+          animate={{ opacity: [0.7, 1, 0.8], scaleY: 1 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="absolute left-[48%] top-3 h-10 w-20 -translate-x-1/2 origin-top bg-gradient-to-b from-amber-100/75 to-transparent blur-sm"
+          style={{ clipPath: 'polygon(42% 0, 58% 0, 100% 100%, 0 100%)' }}
+        />
+        <div className="absolute left-[48%] top-0 z-10 -translate-x-1/2">
           <div className="h-3 w-16 rounded-full border border-slate-600 bg-slate-900 shadow-[0_4px_14px_rgba(15,23,42,0.45)]">
             <div className="mx-auto mt-0.5 h-1.5 w-7 rounded-full bg-gradient-to-r from-indigo-400 via-amber-300 to-emerald-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
           </div>
