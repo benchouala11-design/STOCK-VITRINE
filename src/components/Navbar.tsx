@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { DOWNLOAD_URL } from '../locales/translations';
 import { Download, Globe, Menu, X, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -120,7 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDoc }) => {
 
             {/* Download CTA Button */}
             <a
-              href="#download"
+              href={DOWNLOAD_URL}
+              download="STOCK PRO 1.0.zip"
               className="relative inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 border border-indigo-400/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 overflow-hidden group"
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>

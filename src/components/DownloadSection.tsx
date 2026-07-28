@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import { DOWNLOAD_URL } from '../locales/translations';
 import { Download, ShieldCheck, CheckCircle2, Monitor } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -78,11 +79,8 @@ export const DownloadSection: React.FC = () => {
               </div>
 
               <a
-                href="#download-setup"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Le fichier d'installation de Stock Pro va se télécharger. Contactez-nous sur WhatsApp au 0668537167 si vous avez besoin d'aide pour l'installation !");
-                }}
+                href={DOWNLOAD_URL}
+                download="STOCK PRO 1.0.zip"
                 className="w-full py-4 px-6 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <Download className="w-5 h-5 text-indigo-100 group-hover:scale-110 transition-transform" />

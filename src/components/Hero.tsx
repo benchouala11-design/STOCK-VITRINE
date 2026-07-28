@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import { DOWNLOAD_URL } from '../locales/translations';
 import { Download, PlayCircle, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SoftwareMockup } from './SoftwareMockup';
@@ -73,7 +74,8 @@ export const Hero: React.FC = () => {
               
               {/* Primary Download CTA */}
               <a
-                href="#download"
+                href={DOWNLOAD_URL}
+                download="STOCK PRO 1.0.zip"
                 className="relative group inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-xl shadow-indigo-500/25 hover:shadow-indigo-500/40 border border-indigo-400/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 overflow-hidden text-center"
               >
                 {/* Shine animation */}

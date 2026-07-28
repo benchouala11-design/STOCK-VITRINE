@@ -1,5 +1,9 @@
 export type Language = 'fr' | 'ar';
 
+// Lien central de téléchargement du logiciel Stock Pro
+// (Remplacez par votre lien Google Drive si le fichier dépasse 100 Mo sur GitHub/Vercel)
+export const DOWNLOAD_URL = "/STOCK%20PRO%201.0.zip";
+
 export interface Translations {
   nav: {
     home: string;
