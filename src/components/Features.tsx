@@ -15,7 +15,8 @@ export const Features: React.FC = () => {
   };
 
   return (
-    <section id="features" className="py-20 sm:py-28 relative bg-white border-t border-slate-200/80">
+    <section id="features" className="py-20 sm:py-28 relative bg-indigo-50/55 border-t border-indigo-100 overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-indigo-600 via-violet-500 to-sky-400"></div>
       
       {/* Background spotlights */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>

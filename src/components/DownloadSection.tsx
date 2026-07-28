@@ -7,7 +7,8 @@ export const DownloadSection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="download" className="py-20 sm:py-28 relative bg-[#f8fafc] border-t border-slate-200 overflow-hidden">
+    <section id="download" className="py-20 sm:py-28 relative bg-amber-50/60 border-t border-amber-100 overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-rose-400"></div>
       
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
