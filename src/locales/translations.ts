@@ -36,6 +36,7 @@ export interface Translations {
     dashboardTitle: string;
     liveStatus: string;
     storeName: string;
+    tabHint: string;
     tabs: {
       accueil: string;
       caisse: string;
@@ -128,6 +129,7 @@ export const translations: Record<Language, Translations> = {
       dashboardTitle: "Stock Pro 2026 — Édition Professionnelle",
       liveStatus: "Synchronisé (Hors-ligne OK)",
       storeName: "Boutique Principale",
+      tabHint: "Cliquez sur un module pour changer l'aperçu",
       tabs: {
         accueil: "Tableau de Bord",
         caisse: "Caisse & POS",
@@ -340,6 +342,7 @@ export const translations: Record<Language, Translations> = {
       dashboardTitle: "ستوك برو 2026 — النسخة الاحترافية",
       liveStatus: "متزامن (يعمل بدون إنترنت)",
       storeName: "المتجر الرئيسي",
+      tabHint: "اضغط على أي قسم لتغيير العرض",
       tabs: {
         accueil: "لوحة التحكم",
         caisse: "الصندوق و POS",

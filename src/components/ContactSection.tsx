@@ -13,7 +13,7 @@ export const ContactSection: React.FC = () => {
   )}`;
 
   return (
-    <section id="contact" className="py-20 sm:py-28 relative bg-emerald-50/60 border-t border-emerald-100 overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 relative bg-slate-900 border-t border-emerald-400/15 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
       
       {/* Background Spotlights */}
@@ -24,19 +24,19 @@ export const ContactSection: React.FC = () => {
         
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-200 text-xs font-bold shadow-sm">
             <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
             <span>{t.contact.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             <span>{t.contact.title}</span>
             <span className="text-emerald-600 block sm:inline">
               {t.contact.titleHighlight}
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 font-normal">
+          <p className="text-base sm:text-lg text-slate-300 font-normal">
             {t.contact.subtitle}
           </p>
         </div>
@@ -47,7 +47,7 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-950 to-slate-950 text-white border border-emerald-500/30 shadow-2xl shadow-emerald-950/40 relative overflow-hidden group"
+          className="mt-10 p-7 sm:p-9 rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-950 to-slate-950 text-white border border-emerald-500/30 shadow-2xl shadow-emerald-950/40 relative overflow-hidden group"
         >
           {/* Subtle glowing halo */}
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/30 transition-all pointer-events-none"></div>

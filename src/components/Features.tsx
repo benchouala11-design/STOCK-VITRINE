@@ -15,7 +15,7 @@ export const Features: React.FC = () => {
   };
 
   return (
-    <section id="features" className="py-20 sm:py-28 relative bg-indigo-50/55 border-t border-indigo-100 overflow-hidden">
+    <section id="features" className="py-16 sm:py-20 relative bg-slate-900 border-y border-indigo-400/15 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-indigo-600 via-violet-500 to-sky-400"></div>
       
       {/* Background spotlights */}
@@ -26,24 +26,24 @@ export const Features: React.FC = () => {
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-400/10 border border-indigo-400/30 text-indigo-200 text-xs font-bold shadow-sm">
             <span>{t.features.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             <span>{t.features.title}</span>
             <span className="text-gradient-indigo-light block sm:inline">
               {t.features.titleHighlight}
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 font-normal">
+          <p className="text-base sm:text-lg text-slate-300 font-normal">
             {t.features.subtitle}
           </p>
         </div>
 
         {/* FEATURES GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-12">
           {t.features.items.map((item, idx) => {
             const IconComponent = iconMap[item.icon] || Package;
             return (
@@ -53,7 +53,7 @@ export const Features: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-7 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-indigo-300 hover:bg-white shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 flex flex-col justify-between group"
+                className="p-6 rounded-2xl bg-slate-950/60 border border-white/10 hover:border-indigo-400/50 hover:bg-slate-950 shadow-sm hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -65,16 +65,16 @@ export const Features: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mt-6">
+                  <h3 className="text-xl font-bold text-white mt-5">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mt-2.5">
+                  <p className="text-sm text-slate-300 leading-relaxed mt-2.5">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-200/60 flex items-center gap-1.5 text-xs font-bold text-indigo-600 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                <div className="pt-5 mt-5 border-t border-white/10 flex items-center gap-1.5 text-xs font-bold text-indigo-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
                   <span>En savoir plus</span>
                   <span>→</span>
                 </div>

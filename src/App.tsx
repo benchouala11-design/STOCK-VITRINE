@@ -13,7 +13,7 @@ export function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col font-sans selection:bg-indigo-500/20 selection:text-indigo-900 overflow-x-hidden">
+      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-400/30 selection:text-white overflow-x-hidden">
         {/* Sleek top ambient glow line */}
         <div className="h-1 w-full bg-gradient-to-r from-indigo-600 via-amber-500 to-emerald-500 fixed top-0 left-0 right-0 z-50"></div>
         

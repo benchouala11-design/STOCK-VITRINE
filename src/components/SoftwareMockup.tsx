@@ -83,20 +83,32 @@ export const SoftwareMockup: React.FC = () => {
       {/* ================================================================ */}
       {/* 1. TOP INTERACTIVE MODULE TABS SELECTOR                          */}
       {/* ================================================================ */}
-      <div className="flex items-center justify-center gap-2 p-2 rounded-2xl bg-white/90 border border-slate-200 shadow-xl backdrop-blur-md overflow-x-auto no-scrollbar scroll-smooth">
-        {(Object.keys(screenshots) as Array<keyof typeof screenshots>).map((tabKey) => {
+      <div className="rounded-2xl bg-slate-950/90 border border-white/10 shadow-xl backdrop-blur-md overflow-hidden">
+        <div className="flex items-center justify-center gap-2 px-4 pt-3 pb-1 text-[11px] font-bold text-indigo-200">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+          </span>
+          <span>{t.mockup.tabHint}</span>
+        </div>
+        <div role="tablist" aria-label={t.mockup.tabHint} className="flex items-center justify-center gap-2 p-2 pt-1 overflow-x-auto no-scrollbar scroll-smooth">
+        {(Object.keys(screenshots) as Array<keyof typeof screenshots>).map((tabKey, idx) => {
           const tab = screenshots[tabKey];
           const Icon = tab.icon;
           const isActive = activeTab === tabKey;
           return (
-            <button
+            <motion.button
               key={tabKey}
               onClick={() => setActiveTab(tabKey)}
               type="button"
-              className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-300 shrink-0 cursor-pointer ${
+              role="tab"
+              aria-selected={isActive}
+              animate={isActive ? { y: 0, scale: 1.05 } : { y: [0, -2, 0], scale: 1 }}
+              transition={isActive ? { duration: 0.25 } : { duration: 0.8, delay: idx * 0.14, repeat: Infinity, repeatDelay: 5 }}
+              className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-colors duration-300 shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
                 isActive
                   ? 'text-white bg-gradient-to-r from-indigo-600 to-indigo-700 shadow-lg shadow-indigo-600/30 border border-indigo-400/40 scale-105'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+                  : 'text-slate-300 hover:text-white hover:bg-white/10 border border-transparent'
               }`}
             >
               <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-indigo-600'}`} />
@@ -107,9 +119,10 @@ export const SoftwareMockup: React.FC = () => {
                   className="absolute -bottom-1 left-3 right-3 h-0.5 bg-amber-400 rounded-full shadow-sm"
                 />
               )}
-            </button>
+            </motion.button>
           );
         })}
+        </div>
       </div>
 
       {/* ================================================================ */}
@@ -241,37 +254,37 @@ export const SoftwareMockup: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: lang === 'fr' ? -25 : 25 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200 shadow-xl shadow-indigo-500/5 space-y-6 relative overflow-hidden"
+              className="p-6 sm:p-7 rounded-3xl bg-slate-900 border border-white/10 shadow-xl shadow-indigo-950/30 space-y-6 relative overflow-hidden"
             >
               {/* Subtle top indicator bar */}
               <div className="h-1.5 w-16 bg-gradient-to-r from-indigo-600 to-amber-500 rounded-full"></div>
 
               {/* Module Header */}
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-400/10 border border-indigo-400/30 text-indigo-200 text-xs font-bold">
                   <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                   <span>{activeFeatures.badge}</span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-tight">
                   {activeFeatures.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                   {activeFeatures.subtitle}
                 </p>
               </div>
 
               {/* 4 Feature Points Grid */}
-              <div className="space-y-3.5 pt-2 border-t border-slate-100">
+              <div className="space-y-3.5 pt-2 border-t border-white/10">
                 {activeFeatures.points.map((pt, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors">
+                  <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/60 border border-white/10 hover:border-indigo-400/30 hover:bg-indigo-400/5 transition-colors">
                     <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-600 shrink-0 mt-0.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-extrabold text-slate-900">{pt.title}</h4>
-                      <p className="text-[11px] text-slate-600 mt-0.5 leading-snug">{pt.desc}</p>
+                      <h4 className="text-xs font-extrabold text-white">{pt.title}</h4>
+                      <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">{pt.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -281,7 +294,7 @@ export const SoftwareMockup: React.FC = () => {
               <div className="pt-2">
                 <a
                   href="#contact"
-                  className="w-full py-3 px-4 rounded-xl text-xs font-extrabold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 flex items-center justify-center gap-2 transition-all group"
+                  className="w-full py-3 px-4 rounded-xl text-xs font-extrabold text-indigo-200 bg-indigo-400/10 hover:bg-indigo-400/20 border border-indigo-400/30 flex items-center justify-center gap-2 transition-all group"
                 >
                   <span>Demander une démonstration du module {activeTab}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />

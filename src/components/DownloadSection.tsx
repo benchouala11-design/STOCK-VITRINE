@@ -7,7 +7,7 @@ export const DownloadSection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="download" className="py-20 sm:py-28 relative bg-amber-50/60 border-t border-amber-100 overflow-hidden">
+    <section id="download" className="py-16 sm:py-20 relative bg-slate-950 border-b border-amber-400/15 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-rose-400"></div>
       
       {/* Background Glows */}
@@ -17,18 +17,18 @@ export const DownloadSection: React.FC = () => {
         
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-200 text-xs font-bold shadow-sm">
             <span>{t.download.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             <span>{t.download.title}</span>
             <span className="text-gradient-indigo-light block sm:inline">
               {t.download.titleHighlight}
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 font-normal">
+          <p className="text-base sm:text-lg text-slate-300 font-normal">
             {t.download.subtitle}
           </p>
         </div>
@@ -39,7 +39,7 @@ export const DownloadSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-2xl shadow-indigo-500/10 relative overflow-hidden"
+          className="mt-10 p-7 sm:p-9 rounded-3xl bg-slate-900/80 border border-white/10 shadow-2xl shadow-indigo-950/30 relative overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -50,17 +50,17 @@ export const DownloadSection: React.FC = () => {
                   <Monitor className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-extrabold text-slate-900">{t.download.cardTitle}</h3>
-                  <p className="text-xs text-slate-500 font-medium">{t.download.cardVersion}</p>
+                  <h3 className="text-2xl font-extrabold text-white">{t.download.cardTitle}</h3>
+                  <p className="text-xs text-slate-400 font-medium">{t.download.cardVersion}</p>
                 </div>
               </div>
 
               {/* Specs Grid */}
-              <div className="grid grid-cols-2 gap-4 py-2 border-y border-slate-100">
+              <div className="grid grid-cols-2 gap-4 py-2 border-y border-white/10">
                 {t.download.specs.map((spec, idx) => (
                   <div key={idx} className="space-y-0.5">
                     <span className="text-xs text-slate-400 font-medium block">{spec.label}</span>
-                    <span className="text-sm font-extrabold text-slate-800">{spec.value}</span>
+                    <span className="text-sm font-extrabold text-slate-100">{spec.value}</span>
                   </div>
                 ))}
               </div>
@@ -72,11 +72,11 @@ export const DownloadSection: React.FC = () => {
             </div>
 
             {/* Right Action */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-5">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-950/60 border border-white/10 text-center space-y-5">
               
               <div className="space-y-1">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-600 block">Essai Gratuit 2 Jours</span>
-                <h4 className="text-lg font-bold text-slate-900">Commencez dès maintenant</h4>
+                <h4 className="text-lg font-bold text-white">Commencez dès maintenant</h4>
               </div>
 
               <a
@@ -97,7 +97,7 @@ export const DownloadSection: React.FC = () => {
                 <span>{t.download.ctaBtn}</span>
               </a>
 
-              <div className="space-y-2 text-left rtl:text-right w-full text-xs text-slate-600 font-medium pt-2">
+              <div className="space-y-2 text-left rtl:text-right w-full text-xs text-slate-300 font-medium pt-2">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>Installation rapide en 60 secondes</span>
