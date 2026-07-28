@@ -80,15 +80,19 @@ export const DownloadSection: React.FC = () => {
 
               <a
                 href={DOWNLOAD_URL}
-                onClick={(e) => {
-                  if (!DOWNLOAD_URL.startsWith('http')) {
-                    e.preventDefault();
-                    window.open('https://wa.me/213668537167?text=' + encodeURIComponent("Bonjour, je souhaite recevoir le lien de téléchargement direct du logiciel Stock Pro v4.2 (508 Mo)."), '_blank');
-                  }
-                }}
-                className="w-full py-4 px-6 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 group cursor-pointer"
+                download="STOCK PRO 1.0.zip"
+                className="relative group w-full py-4 px-6 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 hover:from-emerald-400 hover:to-emerald-500 shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 border border-emerald-300/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 overflow-hidden cursor-pointer"
               >
-                <Download className="w-5 h-5 text-indigo-100 group-hover:scale-110 transition-transform" />
+                {/* Shine animation */}
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                
+                {/* Green Pulsing Indicator Dot */}
+                <span className="flex h-2.5 w-2.5 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                </span>
+
+                <Download className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                 <span>{t.download.ctaBtn}</span>
               </a>
 
