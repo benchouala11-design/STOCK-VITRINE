@@ -126,15 +126,16 @@ export const SoftwareMockup: React.FC = () => {
       </div>
 
       {/* Projecteur mural : il relie visuellement le module choisi à son aperçu. */}
-      <div className="relative h-8 overflow-hidden" aria-hidden="true">
+      <div className="relative z-10 h-8 overflow-visible pointer-events-none" aria-hidden="true">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, scaleX: 0.55 }}
-            animate={{ opacity: 1, scaleX: 1 }}
+            initial={{ opacity: 0, scaleX: 0.45 }}
+            animate={{ opacity: [0.45, 0.75, 0.55], scaleX: 1 }}
             exit={{ opacity: 0, scaleX: 1.15 }}
             transition={{ duration: 0.45, ease: 'easeOut' }}
-            className="absolute inset-x-[12%] top-2 h-12 origin-top rounded-[100%] bg-gradient-to-b from-indigo-400/30 via-amber-300/15 to-transparent blur-xl"
+            className="absolute left-1/2 top-3 h-20 w-56 -translate-x-1/2 origin-top bg-gradient-to-b from-amber-300/45 via-indigo-400/20 to-transparent blur-md"
+            style={{ clipPath: 'polygon(45% 0, 55% 0, 100% 100%, 0 100%)' }}
           />
         </AnimatePresence>
         <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
