@@ -13,8 +13,7 @@ export const ContactSection: React.FC = () => {
   )}`;
 
   return (
-    <section id="contact" className="py-16 sm:py-20 relative bg-slate-900 border-t border-emerald-400/15 overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
+    <section id="contact" className="py-16 sm:py-20 relative bg-slate-900 overflow-hidden">
       
       {/* Background Spotlights */}
       <div className="absolute top-1/3 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>

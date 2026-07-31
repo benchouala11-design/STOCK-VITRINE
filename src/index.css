@@ -110,3 +110,40 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* ============================== */
+/* SECTION COLORED DIVIDERS       */
+/* ============================== */
+
+/* Diagonal Color Band Between Sections */
+.section-divider-indigo {
+  position: relative;
+  height: 80px;
+  background: linear-gradient(135deg, #f8fafc 25%, transparent 25%) -50px 0,
+              linear-gradient(225deg, #f8fafc 25%, transparent 25%) -50px 0,
+              linear-gradient(315deg, #f8fafc 25%, transparent 25%),
+              linear-gradient(45deg, #f8fafc 25%, transparent 25%);
+  background-size: 100px 80px;
+  background-color: #0f172a;
+}
+
+.section-divider-warm {
+  position: relative;
+  height: 80px;
+  background: linear-gradient(135deg, #0f172a 25%, transparent 25%) -50px 0,
+              linear-gradient(225deg, #0f172a 25%, transparent 25%) -50px 0,
+              linear-gradient(315deg, #0f172a 25%, transparent 25%),
+              linear-gradient(45deg, #0f172a 25%, transparent 25%);
+  background-size: 100px 80px;
+  background-color: #eef2ff;
+}
+
+/* Hide scrollbar utility for tab bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

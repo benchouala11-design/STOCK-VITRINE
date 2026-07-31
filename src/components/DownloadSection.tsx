@@ -7,11 +7,14 @@ export const DownloadSection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="download" className="py-16 sm:py-20 relative bg-slate-100 border-b border-amber-200 overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-rose-400"></div>
+    <section id="download" className="py-16 sm:py-20 relative bg-gradient-to-br from-indigo-50 via-violet-50 to-amber-50 overflow-hidden">
+      {/* Top colored divider band */}
+      <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500"></div>
       
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-violet-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
