@@ -1,6 +1,7 @@
 export type Language = 'fr' | 'ar';
 
-export const DOWNLOAD_URL = "/STOCK%20PRO%201.0.zip";
+// Lien central de téléchargement du logiciel Stock Pro (hébergé sur Mega.nz)
+export const DOWNLOAD_URL = "https://mega.nz/file/wnMEyRaZ#dngFYS2bPDCYN0qTRfx4E2v_IaI0UFFhaC_y4brKnqI";
 
 export interface TabFeatureHighlight {
   title: string;

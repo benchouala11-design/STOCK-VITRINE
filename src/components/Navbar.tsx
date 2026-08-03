@@ -122,7 +122,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDoc }) => {
             {/* Animated Green Download CTA Button */}
             <a
               href={DOWNLOAD_URL}
-              download="STOCK PRO 1.0.zip"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 hover:from-emerald-400 hover:to-emerald-500 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 border border-emerald-300/40 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 overflow-hidden group cursor-pointer"
             >
               {/* Shine animation */}

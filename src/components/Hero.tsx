@@ -71,7 +71,8 @@ export const Hero: React.FC = () => {
           {/* Primary Animated Green Download CTA */}
           <a
             href={DOWNLOAD_URL}
-            download="STOCK PRO 1.0.zip"
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative group inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-extrabold text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 hover:from-emerald-400 hover:to-emerald-500 shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 border border-emerald-300/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 overflow-hidden text-center cursor-pointer"
           >
             <span className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-xl opacity-30 blur-sm group-hover:opacity-60 transition-opacity"></span>
