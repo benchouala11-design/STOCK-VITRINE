@@ -114,20 +114,20 @@ export const translations: Record<Language, Translations> = {
       downloadBtn: "Télécharger",
     },
     hero: {
-      badge: "✨ Logiciel de Gestion N°1 en Algérie • Essai gratuit 2 jours",
+      badge: "✨ Logiciel de Gestion N°1 en Algérie • Téléchargement Gratuit",
       titleMain: "Le contrôle total de ",
       titleHighlight: "votre commerce & caisse.",
       subtitle: "Stock Pro centralise vos ventes, votre stock, vos encaissements, vos clients et vos bilans dans une application ultra-rapide conçue spécifiquement pour les commerçants algériens.",
-      primaryCta: "Télécharger l'essai gratuit",
+      primaryCta: "Télécharger maintenant",
       secondaryCta: "Contacter sur WhatsApp",
       benefits: {
         offline: "100% Fonctionnel Hors-ligne",
         bilingual: "Français & العربية",
-        trial: "Essai gratuit sans engagement",
+        trial: "Téléchargement gratuit & complet",
       },
     },
     mockup: {
-      dashboardTitle: "Stock Pro 2026 — Édition Professionnelle",
+      dashboardTitle: "Stock Pro v1.0.0 — Édition Professionnelle",
       liveStatus: "Synchronisé (Hors-ligne OK)",
       storeName: "Boutique Principale",
       tabHint: "Cliquez sur un module pour changer l'aperçu",
@@ -278,19 +278,19 @@ export const translations: Record<Language, Translations> = {
       ]
     },
     download: {
-      badge: "💾 Version PC Windows 10/11",
-      title: "Téléchargez Stock Pro et essayez-le ",
-      titleHighlight: "gratuitement dès aujourd'hui.",
-      subtitle: "Installation facile en 1 minute. Aucune carte bancaire requise. Bénéficiez de 2 jours d'essai gratuit complet.",
-      cardTitle: "Stock Pro v4.2 Professionnel",
+      badge: "💾 Version PC Windows — Fichier .EXE",
+      title: "Téléchargez Stock Pro ",
+      titleHighlight: "gratuitement dès maintenant.",
+      subtitle: "Installation facile en 1 minute. Version complète prête à l'emploi. Aucune inscription requise.",
+      cardTitle: "Stock Pro v1.0.0 Professionnel",
       cardVersion: "Compatible Windows 7, 10 & 11 (32/64 bit)",
       specs: [
-        { label: "Taille du fichier", value: "48.5 Mo" },
-        { label: "Durée d'essai", value: "2 jours offerts" },
+        { label: "Taille du fichier", value: "485.2 Mo (.exe)" },
+        { label: "Version", value: "v1.0.0 — Version Complète" },
         { label: "Connexion requis", value: "Non (Fonctionne offline)" },
         { label: "Langues", value: "Français / العربية" }
       ],
-      ctaBtn: "Télécharger Stock Pro (Essai Gratuit)",
+      ctaBtn: "Télécharger Stock Pro maintenant",
       subNote: "Garantie sans virus • Installation sécurisée"
     },
     contact: {
@@ -327,16 +327,16 @@ export const translations: Record<Language, Translations> = {
       downloadBtn: "تحميل",
     },
     hero: {
-      badge: "✨ برنامج التسيير رقم 1 في الجزائر • تجربة مجانية لمدة يومين",
+      badge: "✨ برنامج التسيير رقم 1 في الجزائر • تحميل مجاني",
       titleMain: "تحكم كامل في ",
       titleHighlight: "تجارتك وصندوقك.",
       subtitle: "يجمع Stock Pro مبيعاتك، مخزونك، مدفوعاتك، زبائنك وحصائلتك في تطبيق فائق السرعة مصمم خصيصًا للتجار والشركات الجزائرية.",
-      primaryCta: "تحميل النسخة التجريبية مجاناً",
+      primaryCta: "تحميل الآن",
       secondaryCta: "تواصل معنا عبر واتساب",
       benefits: {
         offline: "يعمل 100% بدون إنترنت",
         bilingual: "العربية & Français",
-        trial: "تجربة مجانية بدون أي التزام",
+        trial: "تحميل مجاني والنسخة الكاملة",
       },
     },
     mockup: {
@@ -491,19 +491,19 @@ export const translations: Record<Language, Translations> = {
       ]
     },
     download: {
-      badge: "💾 نسخة للكمبيوتر Windows 10/11",
-      title: "حمل Stock Pro وجربه ",
-      titleHighlight: "مجاناً ابتداءً من اليوم.",
-      subtitle: "تثبيت سهل في دقيقة واحدة. بدون بطاقة بنكية. استفد من 2 أيام تجربة مجانية كاملة.",
-      cardTitle: "Stock Pro v4.2 الاحترافي",
+      badge: "💾 نسخة للكمبيوتر Windows — ملف .EXE",
+      title: "حمل Stock Pro ",
+      titleHighlight: "مجاناً الآن.",
+      subtitle: "تثبيت سهل في دقيقة واحدة. النسخة الكاملة جاهزة للاستخدام. بدون تسجيل.",
+      cardTitle: "Stock Pro v1.0.0 الاحترافي",
       cardVersion: "متوافق مع Windows 7, 10 & 11 (32/64 bit)",
       specs: [
-        { label: "حجم الملف", value: "48.5 ميغابايت" },
-        { label: "مدة التجربة", value: "2 أيام مجانية" },
+        { label: "حجم الملف", value: "485.2 ميغابايت (.exe)" },
+        { label: "الإصدار", value: "v1.0.0 — النسخة الكاملة" },
         { label: "الإنترنت مطلوب", value: "لا (يعمل بدون إنترنت)" },
         { label: "اللغات", value: "العربية / Français" }
       ],
-      ctaBtn: "تحميل Stock Pro (تجربة مجانية)",
+      ctaBtn: "تحميل Stock Pro الآن",
       subNote: "مضمون خالي من الفيروسات • تثبيت آمن"
     },
     contact: {

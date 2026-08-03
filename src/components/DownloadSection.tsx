@@ -78,7 +78,7 @@ export const DownloadSection: React.FC = () => {
             <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-5">
               
               <div className="space-y-1">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-600 block">Essai Gratuit 2 Jours</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-600 block">Version Complète v1.0.0</span>
                 <h4 className="text-lg font-bold text-slate-900">Commencez dès maintenant</h4>
               </div>
 
