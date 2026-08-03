@@ -26,6 +26,27 @@ export const Hero: React.FC = () => {
       {/* ================================================================ */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-5">
         
+        {/* Social Proof Live Notification Badge */}
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-4 py-2 rounded-2xl bg-white/95 border border-emerald-300/80 text-xs font-bold text-slate-800 shadow-lg shadow-emerald-500/5 backdrop-blur-md mx-auto"
+        >
+          <div className="flex items-center gap-1.5 text-slate-900">
+            <span>🇩🇿</span>
+            <span>Plus de 45 téléchargements aujourd'hui en Algérie</span>
+          </div>
+          <span className="hidden sm:inline text-slate-300">•</span>
+          <div className="flex items-center gap-1.5 text-emerald-700">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Dernière installation effectuée il y a 12 min à Oran</span>
+          </div>
+        </motion.div>
+
         {/* Animated Badge */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}

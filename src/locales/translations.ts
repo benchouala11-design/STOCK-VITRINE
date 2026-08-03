@@ -155,8 +155,8 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       badge: "✨ Logiciel de Gestion N°1 en Algérie • Téléchargement Gratuit",
-      titleMain: "Le contrôle total de ",
-      titleHighlight: "votre commerce & caisse.",
+      titleMain: "Le logiciel N°1 en Algérie pour ",
+      titleHighlight: "simplifier votre caisse, votre stock et vos bénéfices.",
       subtitle: "Stock Pro centralise vos ventes, votre stock, vos encaissements, vos clients et vos bilans dans une application ultra-rapide conçue spécifiquement pour les commerçants algériens.",
       primaryCta: "Télécharger maintenant",
       secondaryCta: "Contacter sur WhatsApp",
@@ -488,8 +488,8 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       badge: "✨ برنامج التسيير رقم 1 في الجزائر • تحميل مجاني",
-      titleMain: "تحكم كامل في ",
-      titleHighlight: "تجارتك وصندوقك.",
+      titleMain: "البرنامج رقم 1 في الجزائر لتسهيل ",
+      titleHighlight: "صندوقك، مخزونك وأرباحك الصافية.",
       subtitle: "يجمع Stock Pro مبيعاتك، مخزونك، مدفوعاتك، زبائنك وحصائلتك في تطبيق فائق السرعة مصمم خصيصًا للتجار والشركات الجزائرية.",
       primaryCta: "تحميل الآن",
       secondaryCta: "تواصل معنا عبر واتساب",
