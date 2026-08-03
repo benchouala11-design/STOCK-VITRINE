@@ -97,6 +97,46 @@ export interface Translations {
     exportExcelPdf: string;
     bilingual: string;
   };
+  sectors: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    items: Array<{
+      title: string;
+      desc: string;
+      icon: string;
+      color: string;
+      tag: string;
+    }>;
+  };
+  testimonials: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    items: Array<{
+      name: string;
+      role: string;
+      city: string;
+      text: string;
+      rating: number;
+    }>;
+  };
+  stats: {
+    items: Array<{
+      value: string;
+      label: string;
+      sublabel: string;
+      icon: string;
+    }>;
+  };
+  whatsappWidget: {
+    status: string;
+    header: string;
+    subtitle: string;
+    btnText: string;
+  };
   footer: {
     rights: string;
     tagline: string;
@@ -312,6 +352,126 @@ export const translations: Record<Language, Translations> = {
       exportExcelPdf: "Export Excel & PDF",
       bilingual: "Français / العربية",
     },
+    sectors: {
+      badge: "🏪 Conçu pour votre commerce",
+      title: "S'adapte parfaitement à votre ",
+      titleHighlight: "secteur d'activité.",
+      subtitle: "Stock Pro est configuré sur mesure pour répondre aux exigences spécifiques de chaque métier en Algérie.",
+      items: [
+        {
+          title: "Superérettes & Alimentation",
+          desc: "Gestion ultra rapide en caisse, pesée automatique, codes-barres et suivi des péremptions.",
+          icon: "ShoppingBag",
+          color: "emerald",
+          tag: "Caisse Express"
+        },
+        {
+          title: "Vêtements & Chaussures",
+          desc: "Gestion par tailles, pointures, couleurs, collections et étiquetage personnalisé.",
+          icon: "Shirt",
+          color: "indigo",
+          tag: "Tailles & Couleurs"
+        },
+        {
+          title: "Téléphonie & Électronique",
+          desc: "Suivi des numéros IMEI, garanties pièces, accessoires et réparation matérielle.",
+          icon: "Smartphone",
+          color: "cyan",
+          tag: "Suivi IMEI & Garanties"
+        },
+        {
+          title: "Cosmétique & Parapharmacie",
+          desc: "Gestion de milliers de références, coffrets cadeaux, remises et stock d'alerte.",
+          icon: "Sparkles",
+          color: "rose",
+          tag: "Multi-Références"
+        },
+        {
+          title: "Quincailleries & Matériaux",
+          desc: "Vente au mètre, kilo ou pièce, tarifs de gros et suivi rigoureux des créances.",
+          icon: "Hammer",
+          color: "amber",
+          tag: "Vente au Dépôt & Gros"
+        },
+        {
+          title: "Grossistes & Dépôts de Stock",
+          desc: "Bons de livraison, factures proforma, gestion multi-dépôts et réseaux de vendeurs.",
+          icon: "Warehouse",
+          color: "violet",
+          tag: "Multi-Dépôts & BL"
+        }
+      ]
+    },
+    testimonials: {
+      badge: "⭐ Témoignages & Avis Clients",
+      title: "Ce que disent les commerçants ",
+      titleHighlight: "en Algérie.",
+      subtitle: "Découvrez les retours d'expérience authentiques de nos utilisateurs à travers les différentes wilayas.",
+      items: [
+        {
+          name: "Moustafa B.",
+          role: "Gérant de Superérette",
+          city: "Alger (Bab Ezzouar)",
+          text: "Khoya Stock Pro habalni f lkaisse! Kont n'galer m3a les tickets, dorka fi 2 secondes n'imprimer ticket w kolsh rgle. Ma n'bedlou b walou!",
+          rating: 5
+        },
+        {
+          name: "Kamel K.",
+          role: "Boutique Habillement Homme",
+          city: "Oran (Centre Ville)",
+          text: "Khdemt bih f magasin ta3 les vêtements, f l-inventaire raye7ni 100%. Douchette direct w le bilan ykhorg clair net sans aucune erreur.",
+          rating: 5
+        },
+        {
+          name: "Brahim M.",
+          role: "Grossiste Pièces & Quincaillerie",
+          city: "Sétif (Zone Industrielle)",
+          text: "Surtout lkrnish m3a les clients w les fournisseurs, rani n'suivi kolsh bla ma nnsa 1 Dinar. Top niveau, rabi ybarek!",
+          rating: 5
+        },
+        {
+          name: "Yacine T.",
+          role: "Magasin Téléphonie & Informatique",
+          city: "Constantine (Nouvelle Ville)",
+          text: "Support ta3hom top! Instalawehli f PC ta3i f 10 minutes par Anydesk w bdayt nkhdem f nafs l-yowm. Service rapide w pro.",
+          rating: 5
+        }
+      ]
+    },
+    stats: {
+      items: [
+        {
+          value: "+3 400",
+          label: "Magasins Équipés",
+          sublabel: "Commerces & Boutiques actives en Algérie",
+          icon: "Store"
+        },
+        {
+          value: "58",
+          label: "Wilayas Couvertes",
+          sublabel: "Présence et installation dans tout le territoire national",
+          icon: "MapPin"
+        },
+        {
+          value: "+12M",
+          label: "Tickets Édités",
+          sublabel: "Transactions et factures générées en toute sécurité",
+          icon: "Receipt"
+        },
+        {
+          value: "99.9%",
+          label: "Satisfaction Clients",
+          sublabel: "Note moyenne attribuée par nos utilisateurs",
+          icon: "Smile"
+        }
+      ]
+    },
+    whatsappWidget: {
+      status: "En ligne • Réponse en 2 min",
+      header: "Besoin d'aide ou d'une démonstration ?",
+      subtitle: "Notre équipe technique est disponible sur WhatsApp au 0668537167",
+      btnText: "Discuter sur WhatsApp"
+    },
     footer: {
       rights: "Tous droits réservés.",
       tagline: "Le logiciel professionnel de référence pour les commerçants algériens."
@@ -524,6 +684,126 @@ export const translations: Record<Language, Translations> = {
       fastPrint: "طباعة سريعة",
       exportExcelPdf: "تصدير Excel و PDF",
       bilingual: "العربية / Français",
+    },
+    sectors: {
+      badge: "🏪 مصمم خصيصاً لمجال تجارتك",
+      title: "يتوافق تماماً مع ",
+      titleHighlight: "نشاطك التجاري.",
+      subtitle: "تم إعداد Stock Pro ليلبي المتطلبات الخاصة لكل مهنة وتجارة في الجزائر.",
+      items: [
+        {
+          title: "السوبرماركت والمواد الغذائية",
+          desc: "تسجيل فائق السرعة، وزن تلقائي، قراءة الباركود وتتبع تواريخ انتهاء الصلاحية.",
+          icon: "ShoppingBag",
+          color: "emerald",
+          tag: "صندوق سريع"
+        },
+        {
+          title: "محلات الملابس والأحذية",
+          desc: "إدارة المقاسات، الألوان، التشكيلات والطباعة المخصصة للملصقات.",
+          icon: "Shirt",
+          color: "indigo",
+          tag: "المقاسات والألوان"
+        },
+        {
+          title: "الهواتف والإلكترونيات",
+          desc: "متابعة أرقام IMEI، ضمان القطع، الأكسسوارات وخدمات الصيانة.",
+          icon: "Smartphone",
+          color: "cyan",
+          tag: "تتبع IMEI والضمان"
+        },
+        {
+          title: "مستحضرات التجميل وشبه الصيدلة",
+          desc: "إدارة آلاف المنتجات، العروض المجمعة، التخفيضات وتنبيهات المخزون.",
+          icon: "Sparkles",
+          color: "rose",
+          tag: "منتجات متعددة"
+        },
+        {
+          title: "العقاقير ومواد البناء (Quincaillerie)",
+          desc: "البيع بالمتر، الكيلوغرام أو القطعة، أسعار الجملة ومتابعة دقيقة للديون.",
+          icon: "Hammer",
+          color: "amber",
+          tag: "بيع المخزن والجملة"
+        },
+        {
+          title: "تجار الجملة ومستودعات المخزون",
+          desc: "وصل التسليم (BL)، الفواتير الأولية، إدارة المستودعات المتعددة وشبكات الموزعين.",
+          icon: "Warehouse",
+          color: "violet",
+          tag: "مستودعات متعددة و BL"
+        }
+      ]
+    },
+    testimonials: {
+      badge: "⭐ آراء وشهادات التجار",
+      title: "ماذا يقول التجار ",
+      titleHighlight: "في الجزائر.",
+      subtitle: "اكتشف تجارب حقيقية من مستخدمينا عبر مختلف ولايات الوطن.",
+      items: [
+        {
+          name: "مصطفى ب.",
+          role: "صاحب سوبرماركت",
+          city: "الجزائر العاصمة (باب الزوار)",
+          text: "Khoya Stock Pro habalni f lkaisse! Kont n'galer m3a les tickets, dorka fi 2 secondes n'imprimer ticket w kolsh rgle. Ma n'bedlou b walou!",
+          rating: 5
+        },
+        {
+          name: "كمال ك.",
+          role: "محل ملابس رجالية",
+          city: "وهران (وسط المدينة)",
+          text: "Khdemt bih f magasin ta3 les vêtements, f l-inventaire raye7ni 100%. Douchette direct w le bilan ykhorg clair net sans aucune erreur.",
+          rating: 5
+        },
+        {
+          name: "إبراهيم م.",
+          role: "تاجر جملة قطع ومواد",
+          city: "سطيف (المنطقة الصناعية)",
+          text: "Surtout lkrnish m3a les clients w les fournisseurs, rani n'suivi kolsh bla ma nnsa 1 Dinar. Top niveau, rabi ybarek!",
+          rating: 5
+        },
+        {
+          name: "ياسين ت.",
+          role: "محل الهواتف والإعلام الآلي",
+          city: "قسنطينة (المدينة الجديدة)",
+          text: "Support ta3hom top! Instalawehli f PC ta3i f 10 minutes par Anydesk w bdayt nkhdem f nafs l-yowm. Service rapide w pro.",
+          rating: 5
+        }
+      ]
+    },
+    stats: {
+      items: [
+        {
+          value: "+3 400",
+          label: "محل مجهز",
+          sublabel: "محلات ومتاجر نشطة في الجزائر",
+          icon: "Store"
+        },
+        {
+          value: "58",
+          label: "ولاية مغطاة",
+          sublabel: "حضور وتثبيت عبر كامل التراب الوطني",
+          icon: "MapPin"
+        },
+        {
+          value: "+12M",
+          label: "وصل صادرة",
+          sublabel: "معاملات وفواتير تم إنشاؤها بأمان كامل",
+          icon: "Receipt"
+        },
+        {
+          value: "99.9%",
+          label: "رضا التجار",
+          sublabel: "متوسط تقييم التجار والزبائن للبرنامج",
+          icon: "Smile"
+        }
+      ]
+    },
+    whatsappWidget: {
+      status: "متصل • رد خلال دقيقتين",
+      header: "تحتاج مساعدة أو عرض توضيحي؟",
+      subtitle: "فريقنا التقني متواجد عبر واتساب على الرقم 0668537167",
+      btnText: "تحدث معنا على واتساب"
     },
     footer: {
       rights: "جميع الحقوق محفوظة.",
